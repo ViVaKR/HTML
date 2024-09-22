@@ -1,0 +1,33 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.container {
+  display: grid;
+  place-items: center;
+  height: 100vh;
+}
+.box {
+  display: relative;
+  left: 500px;
+  border-style: solid;
+  border-width: 1px;
+  width: 100px;
+  height: 100px;
+  background-color: skyblue;
+  transition: width 2s, height 2s, background-color 2s, transform 2s;
+}
+.box:hover {
+  background-color: #ffcccc;
+  width: 300px;
+  height: 300px;
+  transform: rotate(180deg);
+}
+
+/*
+  transtion: <property> <duration> <timing-function> <delay>;
+  property: width, height, background-color, transform
+  duration: 2s
+  timing-function: ease, linear, ease-in, ease-out, ease-in-out
+  delay: 0s
+*/
