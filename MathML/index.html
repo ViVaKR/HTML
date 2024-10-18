@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="index.css">
+  <title>Math</title>
+</head>
+<style>
+  table {
+    border: 1px solid black;
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  table th,
+  table td {
+    border: 1px solid black;
+  }
+
+  table tbody tr:last-child td {
+    width: calc(100% / 9);
+    /* 마지막 행의 td 요소가 9개이므로 100%를 9로 나눔 */
+    box-sizing: border-box;
+    /* 패딩과 보더를 포함하여 너비를 계산 */
+  }
+</style>
+</head>
+
+<body>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>ID</th>
+        <th>Color</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Barb</td>
+        <td>00003</td>
+        <td>Green</td>
+      </tr>
+      <tr>
+        <td>Barb</td>
+        <td>00003</td>
+        <td>Green</td>
+      </tr>
+      <tr>
+        <td>Barb</td>
+        <td>00003</td>
+        <td>Green</td>
+      </tr>
+      <tr>
+        <td colspan="3">
+          <table style="width: 100%;">
+            <tr>
+              <td>Barb</td>
+              <td>00003</td>
+              <td>Green</td>
+              <td>Barb</td>
+              <td>00003</td>
+              <td>Green</td>
+              <td>Barb</td>
+              <td>00003</td>
+              <td>Green</td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <hr>
+  <h1>Blockquote 예시</h1>
+
+  <blockquote>
+    "이것은 인용된 텍스트입니다. 인용된 텍스트는 보통 들여쓰기로 표시됩니다."
+  </blockquote>
+
+  <p>위의 인용문은 <code>&lt;blockquote&gt;</code> 태그를 사용하여 작성되었습니다.</p>
+
+  <p>
+    <math>
+      <mfrac>
+        <mn>1</mn>
+        <mn>3</mn>
+
+      </mfrac>
+    </math>
+    is not a decimal number.
+  </p>
+
+  <p>
+    <math>
+      <mn>1</mn>
+      <mo>+</mo>
+      <mn>2</mn>
+      <mo>=</mo>
+      <mn>3</mn>
+    </math>
+  </p>
+  <math>
+    <mfrac>
+      <mrow>
+        <mn>1</mn>
+        <mo>+</mo>
+        <mn>2</mn>
+      </mrow>
+      <mn>3</mn>
+    </mfrac>
+  </math>
+  <math>
+    <mi>x</mi>
+    <mo>=</mo>
+    <mi>cos</mi>
+    <mo>+</mo>
+    <mi>sin</mi>
+    <mo>0.123</mo>
+    <mi>f(x)</mi>
+    <mn>0xFFEF</mn>
+  </math>
+  <mtext>maps to</mtext>
+
+
+  <math display="block">
+    <mrow>
+      <mrow>
+        <mo>|</mo>
+        <mi>x</mi>
+        <mo>|</mo>
+      </mrow>
+      <mo>=</mo>
+      <mi>x</mi>
+    </mrow>
+    <mtext>&nbsp;iff&nbsp;</mtext>
+    <mrow>
+      <mi>x</mi>
+      <mo>></mo>
+      <mn>0</mn>
+    </mrow>
+  </math>
+
+  <math>
+    <mi>sin</mi>
+    <mo>x</mo>
+  </math>
+  <p>&#10056;</p>
+  <math>U+1D4BD</math>
+</body>
+
+</html>
