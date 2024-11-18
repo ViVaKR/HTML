@@ -1,0 +1,57 @@
+/* CSS Part */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-color: #f0f0f0;
+}
+
+.slideshow-container {
+  position: relative;
+  width: 400px;
+  height: 300px;
+  overflow: hidden;
+  background-color: #000;
+  box-shadow: #000 0 0 10px;
+}
+
+.slideshow {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+  min-width: 400px;
+  height: 300px;
+  object-fit: cover;
+}
+
+button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+button:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.prev {
+  left: 10px;
+}
+
+.next {
+  right: 10px;
+}
+
+.auto {
+  top: 90%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
