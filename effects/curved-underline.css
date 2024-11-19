@@ -1,0 +1,29 @@
+body {
+  background: #2e3537;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: "Roboto", sans-serif;
+}
+
+p {
+  color: white;
+  font-size: 40px;
+}
+
+.underline {
+  position: relative;
+}
+
+.underline:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  border-top: solid 3px red;
+  left: 0;
+  bottom: -10px;
+  border-radius: 50%;
+  height: 8px;
+}

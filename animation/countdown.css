@@ -1,0 +1,52 @@
+body {
+  margin: 0;
+  background-color: #2e3537;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+span:before {
+  content: "";
+  font-family: "Arial", sans-serif;
+  font-size: 5em;
+  color: white;
+  animation: count 10s forwards;
+}
+
+@keyframes count {
+  0% {
+    content: "10";
+  }
+  10% {
+    content: "9";
+  }
+  20% {
+    content: "8";
+  }
+  30% {
+    content: "7";
+  }
+  40% {
+    content: "6";
+  }
+  50% {
+    content: "5";
+  }
+  60% {
+    content: "4";
+  }
+  70% {
+    content: "3";
+  }
+  80% {
+    content: "2";
+  }
+  90% {
+    content: "1";
+  }
+  100% {
+    content: "Start";
+  }
+}
