@@ -1,0 +1,72 @@
+body {
+  background-color: #2e3537;
+  margin: 50px;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: sans-serif;
+}
+
+.carousel {
+  overflow: hidden;
+  width: 600px;
+  height: 400px;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s ease-in-out;
+}
+
+.page {
+  box-sizing: border-box;
+  overflow: auto;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 50px;
+}
+
+#navigation {
+  margin-left: 25px;
+}
+
+#navigation label {
+  background-color: white;
+  display: block;
+  cursor: pointer;
+  margin: 10px 0;
+  width: 30px;
+  line-height: 30px;
+  text-align: center;
+  border-radius: 5px;
+  transition: all 0.4s ease;
+}
+
+#navigation label:hover,
+#button1:checked ~ #navigation .label1,
+#button2:checked ~ #navigation .label2,
+#button3:checked ~ #navigation .label3 {
+  background-color: #3081a7;
+  color: white;
+}
+
+#button1:checked ~ .carousel .wrapper {
+  transform: translateY(0);
+}
+
+#button2:checked ~ .carousel .wrapper {
+  transform: translateY(-100%);
+}
+
+#button3:checked ~ .carousel .wrapper {
+  transform: translateY(-200%);
+}

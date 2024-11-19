@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="image-viewer.css" />
+    <title>Image Viewer</title>
+  </head>
+  <body>
+    <div class="container">
+      <img src="img1.jpg" width="300" height="200" class="image" />
+      <img src="img2.png" width="300" height="200" class="image" />
+      <img src="img3.jpg" width="300" height="200" class="image" />
+      <img src="img4.png" width="300" height="200" class="image" />
+      <img src="img5.png" width="300" height="200" class="image" />
+      <img src="img6.png" width="300" height="200" class="image" />
+      <img src="img7.png" width="300" height="200" class="image" />
+      <img src="img8.png" width="300" height="200" class="image" />
+      <img src="img9.jpg" width="300" height="200" class="image" />
+    </div>
+
+    <div id="image-viewer">
+      <div>
+        <span id="close">&times;</span>
+        <img id="full-image" />
+      </div>
+    </div>
+
+    <script>
+      document.querySelectorAll(".image").forEach((image) => {
+        image.addEventListener("click", (event) => {
+          document
+            .getElementById("full-image")
+            .setAttribute("src", image.getAttribute("src"));
+          document.getElementById("image-viewer").style.display = "block";
+        });
+      });
+
+      document.getElementById("close").addEventListener("click", function () {
+        document.getElementById("image-viewer").style.display = "none";
+      });
+    </script>
+  </body>
+</html>

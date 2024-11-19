@@ -1,0 +1,25 @@
+body {
+  background-color: #2e3537;
+  margin: 0;
+  min-height: 100vh;
+}
+
+.content {
+  padding: 4em;
+}
+
+.content p {
+  font-family: sans-serif;
+  font-size: 4em;
+  color: white;
+}
+
+#cursor-bg {
+  display: none;
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background: #45b0df;
+  border-radius: 50%;
+  filter: blur(50px);
+}
