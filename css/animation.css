@@ -1,0 +1,118 @@
+:root {
+  --main-bg-color: rgb(240, 225, 247);
+}
+
+.container {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.container-8 img:nth-of-type(1) {
+  width: 300px;
+  float: left;
+  shape-outside: circle(50%);
+  clip-path: circle(50% at 50% 50%);
+  filter: grayscale(100%);
+}
+.container-8 img:nth-of-type(2) {
+  width: 100px;
+  float: left;
+  shape-outside: circle(50%);
+  clip-path: circle(50% at 50% 50%);
+  filter: brightness(0.5);
+  filter: drop-shadow(10px 10px 10px gray);
+}
+
+/* Translate */
+.static {
+  width: 100px;
+  height: 100px;
+  background-color: skyblue;
+}
+.moved {
+  width: 100px;
+  height: 100px;
+
+  background-color: pink;
+  transform: translate(50px, 0px);
+}
+/* fallback */
+div .static {
+  color: var(--text-color, red);
+}
+
+/* In the larger application's style */
+div {
+  --text-color: #080;
+}
+
+/* 에니메이션 시작 */
+.container-10 {
+  background-color: var(--main-bg-color);
+}
+.slidein {
+  -moz-animation-duration: 3s;
+  -webkit-animation-duration: 3s;
+  animation-duration: 3s;
+
+  -moz-animation-name: slidein;
+  -webkit-animation-name: slidein;
+  animation-name: slidein;
+
+  /* -moz-animation-iteration-count: 3;
+  -webkit-animation-iteration-count: 3;
+  animation-iteration-count: 3; */
+
+  -moz-animation-direction: alternate;
+  -webkit-animation-direction: alternate;
+  animation-direction: alternate;
+}
+
+@-moz-keyframes slidein {
+  from {
+    margin-left: 100%;
+    width: 300%;
+  }
+
+  to {
+    margin-left: 0%;
+    width: 100%;
+  }
+}
+
+@-webkit-keyframes slidein {
+  from {
+    margin-left: 100%;
+    width: 300%;
+  }
+
+  to {
+    margin-left: 0%;
+    width: 100%;
+  }
+}
+
+@keyframes slidein {
+  from {
+    margin-left: 100%;
+    width: 300%;
+    /* letter-spacing: 3em;
+    opacity: 0; */
+  }
+
+  /* 75% {
+    font-size: 300%;
+    margin-left: 25%;
+    width: 150%;
+  } */
+
+  to {
+    margin-left: 0%;
+    width: 100%;
+    /* letter-spacing: normal;
+    opacity: 1; */
+  }
+}
+/* 에니메이션 종료 */

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animation</title>
+  <link rel="stylesheet" href="animation.css">
+</head>
+
+<body onload="setup()">
+
+  <div class="container">
+    <div class="container-1"></div>
+    <div class="container-2"></div>
+    <div class="container-3"></div>
+    <div class="container-4"></div>
+    <div class="container-5"></div>
+    <div class="container-6"></div>
+    <div class="container-7">
+
+    </div>
+    <div class="container-8">
+      <img src="img2.png" alt="img2">
+      <p>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Temporibus non minima maiores esse maxime autem,
+        impedit, magnam est sed dolore voluptatem quasi fugiat corrupti nihil praesentium odio assumenda dolorem unde
+        quibusdam rem repudiandae eos sapiente. Officiis maiores nam, dolores veniam illum similique explicabo quaerat,
+        delectus reiciendis quae aliquid aut ullam ex optio soluta officia. Quibusdam maiores possimus iste natus nisi
+        modi tempore sunt eum autem harum. Pariatur hic, obcaecati eos accusantium culpa eaque atque. Corporis,
+        aspernatur corrupti pariatur ad voluptatum eum nisi impedit. Blanditiis, exercitationem ex? Cum dolorem
+        exercitationem unde perspiciatis, consequatur commodi et dolor ea fugiat magnam deleniti consequuntur nisi in
+        hic porro sunt blanditiis sed molestiae neque non iusto eveniet odio! Veniam impedit minima libero ipsam
+        recusandae odit, eligendi quos minus incidunt laudantium enim sequi eos adipisci rem ducimus delectus maiores
+        nihil numquam quas ipsum qui. Distinctio mollitia, nulla adipisci quod minima debitis perferendis! Eaque quidem,
+        quaerat ipsa nesciunt, fugiat sit aliquid saepe officia, culpa odio iste quo fugit! Cumque ratione labore nemo
+        vero velit porro fugiat inventore quis atque! Obcaecati, provident repudiandae cupiditate optio nostrum facere
+        deserunt nam velit debitis perferendis sit explicabo suscipit soluta est blanditiis reiciendis quis sapiente
+        aspernatur. Necessitatibus iste ex, dolorum natus architecto possimus, laudantium libero consequatur quis itaque
+        corporis veritatis at! Soluta ea commodi aliquid nihil! Rem delectus odio ipsa ad maiores perspiciatis assumenda
+        cupiditate accusantium hic totam deleniti reiciendis voluptates beatae rerum perferendis, cumque reprehenderit
+        quibusdam expedita at mollitia. Fugiat inventore modi hic, qui rerum odit nam optio temporibus ducimus, in
+        consectetur! Totam sunt qui eligendi illo odio vitae aliquam porro quasi quo, ex amet! Ducimus veritatis eos
+        deserunt tempora exercitationem explicabo asperiores aliquid, ad excepturi molestias quasi quia a neque unde
+        sit? Sequi ratione nostrum fugiat animi laborum, tempora distinctio natus, aliquam delectus facere non
+        aspernatur asperiores molestias dolorum vitae?
+      </p>
+      <img src="img2.png" alt="img2">
+
+    </div>
+    <div class="container-9">
+      <div class="static">Static</div>
+      <div class="moved">Moved</div>
+      <div class="static">Static</div>
+    </div>
+    <div class="container-10">
+      <!-- 에니메이션 파트 -->
+      <h1 id="watchme">Watch me move</h1>
+      <p>
+        this example shows how to use CSS animations to make
+        <code>h1</code> elements move across the page.
+      </p>
+      <p>
+        In addition, we output some text each time an animation event fires, so you can see then in action
+      </p>
+      <ul id="output"></ul>
+    </div>
+
+
+
+  </div>
+
+  <script>
+
+    function listener(e) {
+      const l = document.createElement('li');
+      switch (e.type) {
+        case 'animationstart':
+          l.innerHTML = 'Started: elapsed time is ' + e.elapsedTime;
+          break;
+        case 'animationend':
+          l.innerHTML = 'Ended: elapsed time is ' + e.elapsedTime;
+          break;
+        case 'animationiteration':
+          l.innerHTML = 'New loop started at time: ' + e.elapsedTime;
+          break;
+      }
+
+      document.getElementById('output').appendChild(l);
+    }
+
+    function setup() {
+      const e = document.getElementById('watchme');
+      e.addEventListener('animationstart', listener, false);
+      e.addEventListener('animationend', listener, false);
+      e.addEventListener('animationiteration', listener, false);
+      // var e = document.getElementById("watchme");
+      e.className = "slidein";
+    }
+
+
+  </script>
+
+
+
+</body>
+
+</html>
