@@ -1,5 +1,6 @@
 body {
   margin: 0;
+  padding: 1rem;
   color: #6a6f8c;
   background: #c8c8c8;
   font: 600 16px/18px "Open Sans", sans-serif;
@@ -29,8 +30,10 @@ a {
   max-width: 525px;
   min-height: 670px;
   position: relative;
-  background: url(https://raw.githubusercontent.com/khadkamhn/day-01-login-form/master/img/bg.jpg)
-    no-repeat center;
+
+  /* 원하는 배경 그림.. */
+  background: url(https://code.vivabm.com/robot-man.webp) no-repeat;
+  background-size: cover;
   box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24),
     0 17px 50px 0 rgba(0, 0, 0, 0.19);
 }
@@ -61,6 +64,7 @@ a {
 .login-form .group .label,
 .login-form .group .button {
   text-transform: uppercase;
+  cursor: pointer;
 }
 .login-html .tab {
   font-size: 22px;
@@ -99,8 +103,11 @@ a {
   background: rgba(255, 255, 255, 0.1);
 }
 .login-form .group input[data-type="password"] {
-  text-security: circle;
   -webkit-text-security: circle;
+}
+
+.login-form .group input[type="submit"] {
+  cursor: pointer;
 }
 .login-form .group .label {
   color: #aaa;
