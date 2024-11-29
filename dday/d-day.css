@@ -1,0 +1,16 @@
+.box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-box-shadow: 0px 0px 20px -8px rgba(199, 199, 199, 1);
+  -moz-box-shadow: 0px 0px 20px -8px rgba(199, 199, 199, 1);
+  box-shadow: 0px 0px 20px -8px rgba(199, 199, 199, 1);
+  vertical-align: middle;
+  border-radius: 150px;
+  padding: 175px;
+  width: 55%;
+  background: #a770ef;
+  background: -webkit-linear-gradient(to left, #fdb99c, #cf8bf2, #a770ef);
+  background: linear-gradient(to left, #fdb99c, #cf8bf2, #a770ef);
+}
