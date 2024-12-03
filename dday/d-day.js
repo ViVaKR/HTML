@@ -9,7 +9,7 @@ function dateInYyyyMmDdHhMmSs(date, dateDiveder = " ") {
             padTwoDigits(date.getMonth() + 1) + "월",
             padTwoDigits(date.getDate()) + "일",
         ].join(dateDiveder) +
-        "<br>" +
+        " " +
         [
             padTwoDigits(date.getHours()),
             padTwoDigits(date.getMinutes()),
@@ -18,9 +18,9 @@ function dateInYyyyMmDdHhMmSs(date, dateDiveder = " ") {
     );
 }
 
-function calculateDDay(targetDate) {
+function calculateDDay(meetingDay) {
     const currentDate = new Date();
-    const timeDifference = targetDate - currentDate;
+    const timeDifference = currentDate - meetingDay;
     const daysDifference = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
     return daysDifference;
 }
@@ -30,13 +30,13 @@ function calculateDDay(targetDate) {
 
 document.addEventListener("DOMContentLoaded", function () {
     const today = document.getElementById("today");
-    const indayElement = document.getElementById("dday");
-    const targetDate = new Date('2025-3-9');
+    const days = document.getElementById("days");
+    const meetingDay = new Date('2024-9-3');
 
     function updateDDay() {
-        const dDay = calculateDDay(targetDate);
+        const dDay = calculateDDay(meetingDay);
 
-        indayElement.innerHTML = `D-${dDay}`;
+        days.innerHTML = `만난지 ${dDay} 일`;
     }
     function updateCurrentTime() {
         const currentDate = new Date();

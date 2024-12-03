@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/app.min.css">
+    <title>TypeScript</title>
+  </head>
+
+  <body>
+    <div
+         class="grid grid-cols-[250px_minmax(100px,_1fr)] w-full h-screen bg-slate-100">
+      <nav class="h-screen w-full bg-sky-400">
+
+        <ul class="space-y-10 w-full h-auto m-8 text-white">
+          <li>
+            <a type="button" href="#" class="text-2xl"
+               data-page="home">Home</a>
+          </li>
+          <li>
+            <a type="button" href="#" class="text-2xl"
+               data-page="code">Code</a>
+          </li>
+          <li>
+            <a type="button" href="html/chat.html" class="text-2xl"
+               data-page="chat">Chat</a>
+          </li>
+          <li>
+            <a type="button" href="html/about.html" class="text-2xl"
+               data-page="about">About</a>
+          </li>
+
+        </ul>
+
+      </nav>
+      <main id="content" class="h-screen w-full bg-slate-200"></main>
+      <div id="target" class="col-start-1 col-span-2 h-12 bg-teal-400"></div>
+    </div>
+
+
+    <script src="dist/app.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        // DOMContentLoaded 이벤트가 발생하면 콜백 함수를 실행합니다.
+        // 이 이벤트는 HTML 문서가 완전히 로드되고 파싱되었을 때 발생합니다.
+
+        const links = document.querySelectorAll('nav a');
+        // 'nav' 요소 내의 모든 'a' 태그를 선택하여 NodeList로 반환합니다.
+        // 이 NodeList는 링크 요소들을 포함합니다.
+
+        const content = document.getElementById('content');
+        // 'content'라는 ID를 가진 요소를 선택합니다.
+        // 이 요소는 AJAX로 로드된 콘텐츠를 삽입할 대상입니다.
+
+        links.forEach(link => {
+          // NodeList의 각 링크 요소에 대해 반복합니다.
+
+          link.addEventListener('click', (event) => {
+            // 각 링크에 클릭 이벤트 리스너를 추가합니다.
+
+            event.preventDefault();
+            // 기본 링크 클릭 동작(페이지 이동)을 막습니다.
+
+            const page = event.target.getAttribute('data-page');
+            // 클릭된 링크의 'data-page' 속성 값을 가져옵니다.
+            // 이 값은 로드할 페이지의 이름입니다.
+
+            loadPage(page);
+            // 'loadPage' 함수를 호출하여 해당 페이지를 로드합니다.
+          });
+        });
+
+        function loadPage(page) {
+          // 'page' 매개변수를 받아 해당 페이지를 로드하는 함수입니다.
+
+          fetch(`html/${page}.html`)
+            // 'html' 폴더 내의 'page' 이름을 가진 HTML 파일을 가져옵니다.
+
+            .then(response => response.text())
+            // 가져온 응답을 텍스트로 변환합니다.
+
+            .then(html => {
+              content.innerHTML = html;
+              // 변환된 HTML 텍스트를 'content' 요소의 내부 HTML로 설정합니다.
+            })
+
+            .catch(error => {
+              console.error('Error loading page:', error);
+              // 페이지 로드 중 오류가 발생하면 콘솔에 오류를 출력합니다.
+
+              content.innerHTML = '<p>페이지를 로드하는 중 오류가 발생했습니다.</p>';
+              // 'content' 요소에 오류 메시지를 표시합니다.
+            });
+        }
+      });
+
+      /*
+      fetch 함수는 AJAX(Asunchronous JavaScript and XML)의 현대적인 대안으로,
+      네트워크 요청을 비동기적으로 수행하는데 사용됨.
+      fetch 함수는 Promise 기반으로 동작하며,
+      then() 메서드를 사용하여 성공적인 응답을 처리하고,
+      catch() 메서드를 사용하여 오류를 처리함.
+      */
+      // fetch API를 사용하여 페이지를 로드하는 코드입니다.
+      // 1. GET : 서버에서 데이터를 가져오는 가장 기본적인 예시.
+      function fetchGet() {
+        fetch('https://api.example.com/data')
+          .then(response => response.json())
+          .then(data => {
+            console.log(data);
+          })
+          .catch(error => {
+            console.error('Error fetching data:', error);
+          });
+      }
+
+      // 2. POST : 서버에 데이터를 보내는 예시.
+      function fetchPost() {
+        fetch('https://api.example.com/data', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            name: 'ViVaKR',
+            age: 30
+          })
+        })
+          .then(response => response.json())
+          .then(data => {
+            console.log('Success:', data);
+          })
+          .catch(error => {
+            console.error('Error:', error);
+          });
+      }
+
+      // 3. PUT : 서버에 데이터를 업데이트하는 예시.
+      function fetchPut() {
+        fetch('https://api.example.com/data/1', {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            name: 'Jane Doe',
+            age: 25
+          })
+        })
+          .then(response => response.json())
+          .then(data => {
+            console.log('Data updated successfully:', data);
+          })
+          .catch(error => {
+            console.error('Error updating data:', error);
+          });
+      }
+
+      // 4. DELETE : 서버에서 데이터를 삭제하는 예시.
+      function fetchDelete() {
+        fetch('https://api.example.com/data/1', {
+          method: 'DELETE'
+        })
+          .then(response => {
+            if (response.ok) {
+              console.log('Data deleted successfully');
+            } else {
+              console.error('Error deleting data');
+            }
+          })
+          .catch(error => {
+            console.error('Error deleting data:', error);
+          });
+      }
+
+      // 5. 업로드 : 파일을 업로업
+      function fetchUpload() {
+        const fileInput = document.getElementById('file-input');
+        const file = fileInput.files[0];
+        const formData = new FormData();
+        formData.append('file', file);
+
+        fetch('https://api.example.com/upload', {
+          method: 'POST',
+          body: formData
+        })
+          .then(response => response.json())
+          .then(data => {
+            console.log('File uploaded successfully:', data);
+          })
+          .catch(error => {
+            console.error('Error uploading file:', error);
+          });
+      }
+
+      // 6. 에러 처리 : fetch 함수에서 발생하는 에러를 처리하는 예시.
+      function fetchErrorHandling() {
+        fetch('https://api.example.com/data')
+          .then(response => {
+            if (!response.ok) {
+              throw new Error('Network response was not ok');
+            }
+            return response.json();
+          })
+          .then(data => {
+            console.log(data);
+          })
+          .catch(error => {
+            console.error('Error fetching data:', error);
+          });
+      }
+
+      // 7. fetch 함수를 사용하여 이미지를 가져오는 예시.
+      function fetchImage() {
+        fetch('https://api.example.com/image')
+          .then(response => response.blob())
+          .then(blob => {
+            const imageUrl = URL.createObjectURL(blob);
+            const image = document.createElement('img');
+            image.src = imageUrl;
+            document.body.appendChild(image);
+          })
+          .catch(error => {
+            console.error('Error fetching image:', error);
+          });
+      }
+    </script>
+  </body>
+
+</html>
+
+<!--
+`fetch`라는 단어는 영어로 "가져오다" 또는 "데려오다"라는 의미를 가지고 있습니다. 웹 개발에서 `fetch` 함수는 네트워크 요청을 통해 리소스를 가져오거나 서버에 데이터를 보내는 작업을 수행합니다. 따라서 `fetch` 함수는 단순히 데이터를 가져오는 것뿐만 아니라, 데이터를 서버로 보내는 작업도 포함합니다.
+
+### `fetch` 함수의 의미
+- **가져오기**: 서버에서 데이터를 가져오는 작업을 수행합니다. 예를 들어, API로부터 JSON 데이터를 가져오거나, 이미지 파일을 다운로드하는 작업이 포함됩니다.
+- **보내기**: 서버로 데이터를 보내는 작업을 수행합니다. 예를 들어, 폼 데이터를 서버로 전송하거나, 파일을 업로드하는 작업이 포함됩니다.
+
+### AJAX에서 `fetch`의 의미
+AJAX(Asynchronous JavaScript and XML)에서 `fetch` 함수는 네트워크 요청을 비동기적으로 수행하는 현대적인 방법을 제공합니다. `fetch` 함수는 HTTP 요청을 통해 데이터를 가져오거나 보내는 작업을 수행하며, Promise 기반으로 동작하여 비동기 작업을 더 쉽게 처리할 수 있습니다.
+
+### 예시
+- **데이터 가져오기**:
+  ```javascript
+  fetch('https://api.example.com/data')
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+    })
+    .catch(error => {
+      console.error('Error fetching data:', error);
+    });
+  ```
+
+- **데이터 보내기**:
+  ```javascript
+  fetch('https://api.example.com/data', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      name: 'John Doe',
+      age: 30
+    })
+  })
+    .then(response => response.json())
+    .then(data => {
+      console.log('Success:', data);
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+  ```
+
+### 결론
+`fetch` 함수는 네트워크 요청을 통해 데이터를 가져오거나 보내는 작업을 수행하는 데 사용됩니다. 영어 단어 `fetch`의 기본 의미는 "가져오다"이지만, 웹 개발에서 `fetch` 함수는 양방향 네트워크 통신을 처리하는 데 사용됩니다. 이를 통해 클라이언트와 서버 간의 데이터를 비동기적으로 주고받을 수 있습니다.
+
+Similar code found with 2 license types
+-->
