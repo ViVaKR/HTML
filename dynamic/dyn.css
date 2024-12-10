@@ -1,0 +1,68 @@
+/* 전역변수 먼저 설정  */
+:root {
+  --background: rgb(0, 153, 255, 0.5);
+  --aspect-ratio-16-9: 16 / 9;
+  --aspect-ratio-9-16: 9 / 16;
+  --aspect-ratio-4-3: 4 / 3;
+  --aspect-ratio-4-1: 4 / 1;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100vh;
+  background-color: var(--background);
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+
+  grid-gap: 10px;
+  height: 100vh;
+  width: 100vw;
+  color: white;
+  gap: 10px;
+  padding: 10px;
+  background-color: var(--background);
+}
+
+.container div {
+  align-content: center;
+  text-align: center;
+}
+
+img {
+  object-fit: cover;
+  object-position: center;
+  border-radius: 1rem;
+  padding: 0.5rem;
+}
+
+.one {
+  grid-column: 1;
+  grid-row: 1;
+  width: 300px;
+}
+
+.two {
+  grid-column: 1;
+  grid-row: 2;
+  width: 300px;
+}
+
+.three {
+  grid-column: 1;
+  grid-row: 3;
+  width: 300px;
+}
+
+p {
+  font-size: 1.5rem;
+  font-weight: bold;
+  align-content: center;
+  color: rgb(250, 247, 247);
+}

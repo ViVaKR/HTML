@@ -1,14 +1,12 @@
-let message: string = 'Hello, World! This is TypeScript, running in a browser!';
-console.log(message);
-
-let target = document.getElementById('target');
-if (target)
-    target.innerHTML = message;
-
 //--> fetch API 예시
 document.addEventListener('DOMContentLoaded', () => {
+
     const links = document.querySelectorAll('nav a');
     const content = document.getElementById('content') as HTMLElement;
+
+    // 마지막으로 방문한 페이지를 로드합니다.
+    const lastPage = localStorage.getItem('lastPage');
+    if (lastPage) loadPage(lastPage);
 
     links.forEach(link => {
         link.addEventListener('click', (event) => {
@@ -16,6 +14,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const page = (event.target as HTMLElement).getAttribute('data-page');
             if (page) {
                 loadPage(page);
+
+                // 마지막으로 방문한 페이지를 저장합니다.
+                localStorage.setItem('lastPage', page);
             }
         });
     });
@@ -23,16 +24,14 @@ document.addEventListener('DOMContentLoaded', () => {
     function loadPage(page: string) {
         fetch(`html/${page}.html`)
             .then(response => {
-                if (!response.ok) {
+                if (!response.ok)
                     throw new Error('Network response was not ok');
-                }
                 return response.text();
             })
             .then(html => {
                 content.innerHTML = html;
             })
             .catch(error => {
-                console.error('Error loading page:', error);
                 content.innerHTML = '<p>페이지를 로드하는 중 오류가 발생했습니다.</p>';
             });
     }
@@ -85,8 +84,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
     }
 });
-
-
 /*
 
 ### 설명
