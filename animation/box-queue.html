@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Queue</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      a {
+        text-decoration: none;
+        color: #000;
+      }
+
+      img {
+        vertical-align: top;
+      }
+
+      ol,
+      ul,
+      li {
+        list-style: none;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f0f0f0;
+      }
+
+      .rolling-banner {
+        width: 100%;
+        overflow: hidden;
+        background-color: #fff;
+        border: 1px solid #ccc;
+      }
+
+      .banner-track {
+        display: flex;
+        animation: scroll 10s linear infinite;
+      }
+
+      .banner-item {
+        flex: 0 0 auto;
+        width: 100px;
+        height: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 20px;
+        background-color: #4caf50;
+        color: #fff;
+        border-right: 1px solid #fff;
+      }
+
+      /* 롤링 애니메이션 */
+      @keyframes scroll {
+        0% {
+          transform: translateX(0);
+        }
+
+        100% {
+          transform: translateX(calc(-100px * 10));
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="rolling-banner">
+      <div class="banner-track">
+        <div class="banner-item">1</div>
+        <div class="banner-item">2</div>
+        <div class="banner-item">3</div>
+        <div class="banner-item">4</div>
+        <div class="banner-item">5</div>
+        <div class="banner-item">6</div>
+        <div class="banner-item">7</div>
+        <div class="banner-item">8</div>
+        <div class="banner-item">9</div>
+        <div class="banner-item">10</div>
+        <!-- 복제용 html -->
+        <div class="banner-item">1</div>
+        <div class="banner-item">2</div>
+        <div class="banner-item">3</div>
+        <div class="banner-item">4</div>
+        <div class="banner-item">5</div>
+        <div class="banner-item">6</div>
+        <div class="banner-item">7</div>
+        <div class="banner-item">8</div>
+        <div class="banner-item">9</div>
+        <div class="banner-item">10</div>
+      </div>
+    </div>
+  </body>
+
+</html>
