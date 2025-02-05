@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arc Demo</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        width: 100%;
+        background-color: #f0f0f0;
+      }
+
+      .rounded-edge {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 100px;
+        left: 0;
+        right: 0;
+        clip-path: ellipse(65% 100% at bottom);
+        /* 타원형 반달 구현 */
+        padding: 1rem;
+        padding-top: 0.5rem;
+        background-image: linear-gradient(to top, rgb(1, 9, 40), rgb(47, 65, 156));
+      }
+
+      .rounded-edge-border {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 100px;
+        left: 0;
+        right: 0;
+        /* 타원형 클리핑으로 반달 형태 구현 */
+        clip-path: ellipse(65% 100% at bottom);
+        padding: 1rem;
+        padding-top: 0.5rem;
+        /* 배경 그라데이션 : 좌우로 진행되는 보라색-붉은색-보라색 그라데이션 */
+        background-image: linear-gradient(to right, #78097d, #b1034e, #78097d);
+        /* mask : 요소 하단에서부터 라디얼 그라데이션 마스크 적용, 투명에서 불투명으로 변경 */
+        /* 63%, 95px 부분으로 두께 조절, 위 짝에 clip-path 와 상호 조절 */
+        mask: radial-gradient(63% 95px at bottom, #0000 100%, #000);
+      }
+    </style>
+  </head>
+
+
+  <body>
+    <div class="rounded-edge"></div>
+    <div class="rounded-edge-border"></div>
+  </body>
+
+</html>
