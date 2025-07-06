@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="progress-bar.css" />
+    <title>Progress Bar</title>
+  </head>
+  <body>
+    <div class="progress-div">
+      <div class="progress-bar"></div>
+      <div class="label"></div>
+    </div>
+
+    <script>
+      CSS.registerProperty({
+        name: "--progress",
+        syntax: "<integer>",
+        initialValue: 0,
+        inherits: true,
+      });
+    </script>
+  </body>
+</html>

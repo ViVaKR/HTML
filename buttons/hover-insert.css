@@ -1,0 +1,44 @@
+body {
+  background: #2e3637;
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Arial", sans-serif;
+}
+
+button {
+  background: #0380a7;
+  border: none;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  width: 200px;
+  padding: 15px 15px 15px 70px;
+  border-radius: 30px;
+  overflow: hidden;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all 1.2s;
+}
+
+button span {
+  display: inline-block;
+  transform: translateX(250px);
+  opacity: 0;
+  transition: opacity 0.1s, transform 0.4s 0.5s;
+}
+
+button:hover {
+  background: white;
+  color: #0380a7;
+  width: 250px;
+  padding: 15px;
+}
+
+button:hover span {
+  transform: translateX(0);
+  opacity: 1;
+}

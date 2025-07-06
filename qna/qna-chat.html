@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>메신저 연습</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      height: 100vh;
+    }
+
+    #folder-container {
+      width: 30%;
+      background-color: #f0f0f0;
+      padding: 10px;
+      border-right: 1px solid #ccc;
+      overflow-y: auto;
+    }
+
+    .folder {
+      margin-bottom: 10px;
+    }
+
+    .folder-title {
+      font-weight: bold;
+      cursor: pointer;
+      margin-bottom: 5px;
+      padding: 5px;
+      background-color: #ccc;
+    }
+
+    .teacher-list {
+      padding-left: 10px;
+    }
+
+    .teacher-item {
+      cursor: pointer;
+      padding: 3px;
+      transition: background-color 0.3s;
+    }
+
+    .teacher-item:hover {
+      background-color: #ddd;
+    }
+
+    #chat-container {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 10px;
+    }
+
+    #chat-log {
+      flex-grow: 1;
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-bottom: 10px;
+      overflow-y: auto;
+      background-color: #fff;
+    }
+
+    #chat-log div {
+      margin-bottom: 10px;
+    }
+
+    #message-input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      resize: none;
+      /* 텍스트 영역 크기 고정 */
+      height: 60px;
+      /* 텍스트 영역 높이 설정 */
+    }
+
+    button {
+      margin-left: 5px;
+      padding: 5px 10px;
+      cursor: pointer;
+      border: none;
+      background-color: #4CAF50;
+      color: white;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    #send-btn,
+    #receive-btn {
+      margin-top: 10px;
+    }
+
+    #selected-teacher {
+      margin-bottom: 10px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="folder-container">
+    <!-- 폴더 구조를 동적으로 추가할 공간 -->
+  </div>
+
+  <div id="chat-container">
+    <div id="selected-teacher">선생님을 선택하세요.</div>
+    <div id="chat-log">
+      <!-- 채팅 메시지가 표시되는 영역 -->
+    </div>
+    <textarea id="message-input" placeholder="메시지 입력"></textarea>
+    <div>
+      <button id="send-btn">보내기</button>
+      <button id="receive-btn">받기</button>
+    </div>
+  </div>
+
+  <script>
+    let folders = [
+
+      {
+        name: '1학년',
+        teachers: [
+          { name: '김선생', position: '1-1' },
+          { name: '박선생', position: '1-2' }
+        ]
+      },
+      {
+        name: '2학년',
+        teachers: [
+          { name: '강선생', position: '2-1' },
+          { name: '최선생', position: '2-2' }
+        ]
+      }
+    ];
+
+    let selectedTeacher = null;
+    let chatHistory = JSON.parse(localStorage.getItem('chatHistory')) || {}; // 선생님별로 채팅 기록 저장
+
+    function createFolderTree(folders) {
+      let container = document.getElementById('folder-container');
+      folders.forEach(folder => {
+        let folderDiv = document.createElement('div');
+        folderDiv.classList.add('folder');
+
+        // 폴더 이름
+        let folderTitle = document.createElement('div');
+        folderTitle.innerHTML = folder.name;
+        folderTitle.classList.add('folder-title');
+        folderDiv.appendChild(folderTitle);
+
+        // 선생님 리스트
+        let teacherList = document.createElement('div');
+        teacherList.classList.add('teacher-list');
+        folder.teachers.forEach(teacher => {
+          let teacherItem = document.createElement('div');
+          teacherItem.innerHTML = `${teacher.name} (${teacher.position || ''})`;
+          teacherItem.classList.add('teacher-item');
+          teacherList.appendChild(teacherItem);
+
+          // 선생님 선택 시
+          teacherItem.onclick = () => selectTeacher(teacher);
+        });
+
+        folderDiv.appendChild(teacherList);
+        container.appendChild(folderDiv);
+      });
+      // 기존 폴더 트리 생성 코드 유지
+    }
+
+    function selectTeacher(teacher) {
+      selectedTeacher = teacher;
+      document.getElementById('selected-teacher').innerText = `대화 상대: ${teacher.name} (${teacher.position})`;
+
+      // 이전 채팅 내역 불러오기
+      loadChatHistoryForTeacher(teacher.name);
+    }
+
+    function sendMessage(sender) {
+      let messageInput = document.getElementById('message-input');
+      let message = messageInput.value.trim();
+      if (message === '' || !selectedTeacher) return;
+
+      let messageData = {
+        sender: sender,
+        content: message.replace(/\n/g, '<br>'), // 줄바꿈을 <br>로 변환
+        teacher: selectedTeacher.name
+      };
+
+      // 현재 선택된 선생님 이름을 기준으로 채팅 저장
+      if (!chatHistory[selectedTeacher.name]) {
+        chatHistory[selectedTeacher.name] = [];
+      }
+      chatHistory[selectedTeacher.name].push(messageData);
+      localStorage.setItem('chatHistory', JSON.stringify(chatHistory));
+
+      appendMessageToChatLog(messageData);
+      messageInput.value = ''; // 입력창 비우기
+    }
+
+    function appendMessageToChatLog(messageData) {
+      let chatLog = document.getElementById('chat-log');
+      let messageDiv = document.createElement('div');
+      messageDiv.innerHTML = `<strong>${messageData.sender}:</strong> <span class="message-content">${messageData.content}</span>`;
+
+      let editBtn = document.createElement('button');
+      editBtn.innerHTML = '수정';
+      editBtn.onclick = () => editMessage(messageDiv, messageData);
+
+      let deleteBtn = document.createElement('button');
+      deleteBtn.innerHTML = '삭제';
+      deleteBtn.onclick = () => {
+        messageDiv.remove();
+        chatHistory[selectedTeacher.name] = chatHistory[selectedTeacher.name].filter(msg => msg !== messageData);
+        localStorage.setItem('chatHistory', JSON.stringify(chatHistory));
+      };
+
+      messageDiv.appendChild(editBtn);
+      messageDiv.appendChild(deleteBtn);
+      chatLog.appendChild(messageDiv);
+      chatLog.scrollTop = chatLog.scrollHeight;
+    }
+
+    function editMessage(messageDiv, messageData) {
+      let messageContentElement = messageDiv.querySelector('.message-content');
+      let newMessage = prompt('새로운 메시지를 입력하세요:', messageContentElement.innerText.replace(/<br>/g, '\n'));
+      if (newMessage) {
+        messageData.content = newMessage.replace(/\n/g, '<br>');
+        messageContentElement.innerHTML = messageData.content;
+        localStorage.setItem('chatHistory', JSON.stringify(chatHistory));
+      }
+    }
+
+    function loadChatHistoryForTeacher(teacherName) {
+      let chatLog = document.getElementById('chat-log');
+      chatLog.innerHTML = ''; // 기존 메시지 삭제
+      if (chatHistory[teacherName]) {
+        chatHistory[teacherName].forEach(messageData => appendMessageToChatLog(messageData));
+      }
+    }
+
+    document.getElementById('send-btn').onclick = () => {
+      sendMessage('나');
+    };
+
+    document.getElementById('receive-btn').onclick = () => {
+      sendMessage(selectedTeacher ? selectedTeacher.name : '상대방');
+    };
+
+    // 페이지 로드 시 폴더 트리 생성
+    createFolderTree(folders);
+  </script>
+
+</body>
+
+</html>

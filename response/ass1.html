@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            box-sizing: border-box;
+
+            background: url('mona.jpg') no-repeat center center/cover;
+            height: 100%;
+            position: relative;
+        }
+
+        .ball {
+            width: 3em;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        const numBalls = 10; // 생성할 볼의 개수
+        const balls = []; // 볼을 담을 배열
+        const startY = window.innerHeight - 50; // 볼이 생성될 y 좌표
+        const interval = window.innerHeight / numBalls; // 각 볼의 초기 타이머 간격
+
+        for (let i = 0; i < numBalls; i++) { // 볼을 생성하고 배열에 담는다.
+            // 볼을 생성하고 스타일을 설정한다.
+            const ball = document.createElement('img'); // img 엘리먼트를 생성한다.
+            ball.src = 'ball.png'; // 볼 이미지를 설정한다.
+            ball.classList.add('ball'); // 볼 클래스를 추가한다.
+            ball.style.position = 'absolute'; // 볼의 위치를 설정한다.
+            document.body.appendChild(ball); // 볼을 body에 추가한다.
+            balls.push({ // 볼을 배열에 추가한다.
+                element: ball, // 각 볼의 엘리먼트
+                timer: i * interval, // 각 볼에 대해 초기 타이머 값을 설정
+                randomX: Math.random() * window.innerWidth // 각 볼의 x 좌표를 랜덤하게 설정
+            });
+        }
+
+        /// 볼을 렌더링하는 함수
+        function render() {
+            balls.forEach(ball => { // 각 볼에 대해, 타이머 값을 증가시키고, y 좌표를 변경한다.
+                ball.element.style.transform = `translate(${ball.randomX}px, ${startY - ball.timer}px)`;
+                ball.timer += 5; // 타이머 값을 증가시킨다.
+                if (ball.timer > startY) { // 타이머 값이 y 좌표보다 커지면, 타이머 값을 0으로 설정하고 x 좌표를 랜덤하게 설정한다.
+                    ball.timer = 0; // 타이머 값을 0으로 설정한다.
+                    ball.randomX = Math.random() * window.innerWidth; // 볼의 x 좌표를 랜덤하게 설정한다.
+                }
+            });
+
+            // 다음 프레임을 요청한다.
+            requestAnimationFrame(render);
+        }
+        render(); // 렌더링 함수를 호출한다. (트리거 함수)
+    </script>
+</body>
+
+</html>

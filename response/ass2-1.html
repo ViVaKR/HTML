@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        body{
+            background: url("image/bw.jpg");
+            margin: 0 200px;
+        }
+        .snow{width: 50px;}
+    </style>
+</head>
+<body>
+    <img class = "snow" src = "image/ssr.png">
+    <script>
+        const snow = document.querySelector('.snow');
+        let timer = 0;  
+
+        function render(){      
+        snow.style.transform = `translateY(${-timer}px)`; 
+        timer += 2;   
+
+        let = requestAnimationFrame(render);
+
+        if(timer > 30){
+            timer = -550;
+        }  
+        }
+        render()
+        for(let i=0; i<20; i++){
+            render(); 
+        }
+    </script>
+</body>
+</html>

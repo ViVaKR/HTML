@@ -1,0 +1,236 @@
+@font-face {
+  font-family: 'MyCustomFont';
+  src: url('./fonts/Roboto-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'MyCustomFont-Bold';
+  src: url('./fonts/Roboto-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'MyCustomFont-Medium';
+  src: url('./fonts/Roboto-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'MyCustomFont-Black';
+  src: url('./fonts/Roboto-Black.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+  /* font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif; */
+  font-family: 'MyCustomFont', sans-serif;
+  font-size: 14px;
+  color: #000;
+  background: #fff;
+  width: 100%;
+  height: 100%;
+}
+
+.title {
+  font-family: 'MyCustomFont-Black', sans-serif;
+  font-size: 5em;
+  margin-bottom: 20px;
+}
+
+.pulse {
+  animation: pulse 3s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    font-variation-settings: 'wght' 100;
+  }
+  50% {
+    font-variation-settings: 'wght' 400;
+  }
+  100% {
+    font-variation-settings: 'wght' 100;
+  }
+}
+
+.example::before {
+  content: 'Before: ';
+  color: red;
+}
+
+.example::after {
+  content: ' :After';
+  color: blue;
+}
+
+.swiper {
+  width: 50%;
+  height: calc(100% / 3);
+}
+
+/* Swiper 기본 아이콘 숨기기 */
+.swiper-button-prev::before,
+.swiper-button-next::before {
+  display: none;
+}
+
+/* 이전 버튼 아이콘 변경 */
+.swiper-button-prev::after {
+  content: 'arrow_back'; /* Material Icons의 아이콘 이름 */
+  /* font-family: 'Material Icons'; */
+  font-family: 'Material Symbols Outlined' !important;
+  font-size: 24px !important;
+  color: gray !important; /* 아이콘 색상 */
+  display: inline-block;
+}
+
+/* hover 효과 추가 */
+.swiper-button-prev:hover::after,
+.swiper-button-next:hover::after {
+  color: #ff0000 !important; /* 마우스 오버 시 아이콘 색상 변경 */
+}
+
+/* 다음 버튼 아이콘 변경 */
+.swiper-button-next::after {
+  content: 'arrow_forward'; /* Material Icons의 아이콘 이름 */
+  /* font-family: 'Material Icons'; */
+  font-family: 'Material Symbols Outlined' !important;
+  font-size: 24px !important;
+  color: gray !important; /* 아이콘 색상 */
+  display: inline-block;
+}
+
+.poppins-thin {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 100;
+  font-style: normal;
+}
+
+.poppins-extralight {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 200;
+  font-style: normal;
+}
+
+.poppins-light {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.poppins-regular {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.poppins-medium {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.poppins-semibold {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.poppins-bold {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.poppins-extrabold {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+  font-style: normal;
+}
+
+.poppins-black {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 900;
+  font-style: normal;
+}
+
+.poppins-thin-italic {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 100;
+  font-style: italic;
+}
+
+.poppins-extralight-italic {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 200;
+  font-style: italic;
+}
+
+.poppins-light-italic {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.poppins-regular-italic {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.poppins-medium-italic {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.poppins-semibold-italic {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-style: italic;
+}
+
+.poppins-bold-italic {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.poppins-extrabold-italic {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+  font-style: italic;
+}
+
+.poppins-black-italic {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 900;
+  font-style: italic;
+}
+
+.normal-text {
+  font-weight: normal;
+  font-style: normal;
+}
+
+.bold-text {
+  font-weight: bold;
+  font-style: normal;
+}
+
+.italic-text {
+  font-weight: normal;
+  font-style: italic;
+}
+
+.bold-italic-text {
+  font-weight: bold;
+  font-style: italic;
+}

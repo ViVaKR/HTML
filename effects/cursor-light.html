@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="cursor-light.css" />
+    <title>Cursor Light</title>
+  </head>
+  <body>
+    <div id="cursor-bg"></div>
+
+    <div class="content">
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, sunt
+        tenetur? Quisquam numquam deserunt, optio nulla laborum dolorem odio
+        debitis! Itaque explicabo quidem cupiditate non velit consequatur rerum
+        sit quod.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, sunt
+        tenetur? Quisquam numquam deserunt, optio nulla laborum dolorem odio
+        debitis! Itaque explicabo quidem cupiditate non velit consequatur rerum
+        sit quod.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, sunt
+        tenetur? Quisquam numquam deserunt, optio nulla laborum dolorem odio
+        debitis! Itaque explicabo quidem cupiditate non velit consequatur rerum
+        sit quod.
+      </p>
+    </div>
+
+    <script>
+      const bg = document.getElementById("cursor-bg");
+
+      document.addEventListener("pointermove", (e) => {
+        bg.style.display = "block";
+
+        bg.animate(
+          {
+            top: e.pageY + "px",
+            left: e.pageX + "px",
+          },
+          {
+            duration: 1000,
+            fill: "forwards",
+          }
+        );
+      });
+    </script>
+  </body>
+</html>

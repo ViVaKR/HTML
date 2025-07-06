@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="blur-image-scroll.css" />
+    <link rel="stylesheet" href="blur-image-scroll.css" />
+    <title>Blur Image Scroll</title>
+  </head>
+  <body>
+    <div id="container">
+      <img id="image" src="images/robot-man.png" />
+    </div>
+
+    <script>
+      window.addEventListener("scroll", function () {
+        let num = (window.scrollY / window.innerHeight) * 4;
+
+        document.getElementById("image").style.webkitFilter =
+          "blur(" + num + "px)";
+      });
+    </script>
+  </body>
+</html>

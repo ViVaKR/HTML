@@ -1,0 +1,22 @@
+.object {
+  animation: MoveUpDown 1s linear infinite;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  font-size: 2rem;
+  font-weight: bold;
+  color: blueviolet;
+  letter-spacing: 0.1em;
+  text-align: center;
+}
+
+@keyframes MoveUpDown {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-100px);
+  }
+}

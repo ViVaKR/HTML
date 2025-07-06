@@ -1,0 +1,45 @@
+body {
+  margin: 0;
+}
+
+@keyframes roundaction {
+  0% {
+    left: 0;
+    top: 0;
+  }
+  25% {
+    left: 0;
+    top: calc(100% - 75px);
+    background-color: red;
+  }
+  50% {
+    top: calc(100% - 75px);
+    left: calc(100% - 75px);
+    background-color: blue;
+  }
+  75% {
+    left: calc(100% - 75px);
+    top: 0;
+    background-color: green;
+  }
+
+  100% {
+    left: 0;
+    top: 0;
+    background-color: purple;
+  }
+}
+
+.box {
+  width: 75px;
+  height: 75px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background-color: purple;
+
+  animation-name: roundaction;
+  animation-duration: 3.5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}

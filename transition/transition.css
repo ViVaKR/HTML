@@ -1,0 +1,49 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100%;
+  font: 1.2em sans-serif;
+}
+.container {
+  display: grid;
+  place-items: center;
+  height: 50%;
+  background-color: #653939;
+}
+
+div .item {
+  border: 1rem solid #fff;
+  padding: 1rem;
+  color: #fff;
+}
+
+.wrapper {
+  min-height: 50%;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+.page-header,
+.page-footer {
+  padding: 1rem;
+  background-color: #333;
+  color: #fff;
+}
+
+.page-body {
+  padding: 1rem;
+}
+
+.page-body p {
+  border: 1px solid gray;
+  padding: 1rem;
+}

@@ -1,0 +1,30 @@
+{
+  "name": "getpublicip",
+  "version": "1.0.0",
+  "description": "Get My Public IP Address",
+  "main": "server.mjs",
+  "scripts": {
+    "watch": "NODE_ENV=development nodemon --watch server.mjs -e html,css,js localhost:28175",
+    "watch:css": "npx @tailwindcss/cli -i global.css -o public/css/styles.css --w",
+    "dev": "NODE_ENV=development concurrently \"npm run watch\" \"npm run watch:css\""
+  },
+  "keywords": [],
+  "author": "ViVaKR",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "@tailwindcss/cli": "^4.0.9",
+    "@tailwindcss/postcss": "^4.0.9",
+    "cors": "^2.8.5",
+    "ejs": "^3.1.9",
+    "express": "^4.21.2",
+    "node-fetch": "^3.3.2",
+    "nodemon": "^3.1.9",
+    "postcss": "^8.5.3",
+    "public-ip": "^7.0.1",
+    "tailwindcss": "^4.0.9"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}
