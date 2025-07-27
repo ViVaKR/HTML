@@ -1,0 +1,34 @@
+@import 'bootstrap/scss/bootstrap';
+
+/*
+  ========================================
+  기본 스타일 설정 (Modern CSS Reset)
+  ========================================
+*/
+
+html {
+  box-sizing: border-box; /* 1. 모든 요소의 박스 계산을 더 쉽게 만듭니다. */
+  font-size: 62.5%; /* 2. 1rem = 10px로 설정하여 rem 단위 계산을 쉽게 합니다. */
+  scroll-behavior: smooth; /* 3. 페이지 내 링크 이동을 부드럽게 만듭니다. */
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit; /* 1-1. 모든 요소와 가상 요소가 html의 box-sizing을 상속받도록 합니다. */
+}
+
+body {
+  margin: 0; /* 4. 브라우저 기본 마진을 제거합니다. */
+  padding: 0; /* 4. 브라우저 기본 패딩을 제거합니다. (필요에 따라) */
+  font-family: 'Pretendard Variable', Pretendard, -apple-system,
+    BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI',
+    'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif; /* 5. 가독성 좋은 최신 폰트 우선순위로 설정합니다. */
+  font-size: 1.6rem; /* 2-1. 기본 폰트 크기를 16px로 설정합니다. (1.6 * 10px) */
+  line-height: 1.6; /* 6. 줄 간격을 적절하게 설정하여 가독성을 높입니다. */
+  color: #212529; /* 7. 너무 진하지 않은 보기 편한 기본 글자색을 설정합니다. */
+  background-color: #fff; /* 8. 기본 배경색을 흰색으로 설정합니다. */
+  -webkit-font-smoothing: antialiased; /* 9. 폰트를 부드럽게 렌더링합니다. (웹킷 브라우저용) */
+  -moz-osx-font-smoothing: grayscale; /* 9. 폰트를 부드럽게 렌더링합니다. (파이어폭스용) */
+}
