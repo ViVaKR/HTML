@@ -1,4 +1,4 @@
-import '../scss/styles.scss';
+import '../styles/main.scss';
 
 import * as bootstrap from 'bootstrap';
 

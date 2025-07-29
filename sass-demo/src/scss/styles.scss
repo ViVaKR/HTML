@@ -1,15 +1,74 @@
 @import 'bootstrap/scss/bootstrap';
 
-/*
-  ========================================
-  기본 스타일 설정 (Modern CSS Reset)
-  ========================================
-*/
+// @import 'bootstrap/scss/functions';
+// @import 'bootstrap/scss/variables';
+// @import 'bootstrap/scss/utilities';
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cute+Font&display=swap');
+
+$utilities: map-merge(
+  $utilities,
+  (
+    'width':
+      map-merge(
+        map-get($utilities, 'width'),
+        (
+          values:
+            map-merge(
+              map-get(map-get($utilities, 'width'), 'values'),
+              (
+                // Adds .w-10 for width 10%
+                10: 10%,
+                // Adds .w-20 for width 20%
+                20: 200px
+              )
+            ),
+        )
+      ),
+  )
+);
+@import 'bootstrap/scss/bootstrap'; // Import the utility API
+// --- 수정된 부분 ---
+
+// 2. 먼저, 유틸리티 클래스에 사용할 값들의 맵(map)을 동적으로 생성합니다.
+// Sass 맵 정의 안에서는 @for 같은 로직을 직접 실행할 수 없기 때문에,
+// 맵을 미리 만들어서 변수에 저장해야 합니다.
+$pixel-widths: ();
+@for $i from 1 through 500 {
+  // 1: 1px, 2: 2px, ... 와 같은 키-값 쌍을 $pixel-widths 맵에 추가합니다.
+  $pixel-widths: map-merge(
+    $pixel-widths,
+    (
+      $i: #{$i}px,
+    )
+  );
+}
+
+// 3. 위에서 생성한 $pixel-widths 맵을 사용하여 새로운 유틸리티를 정의합니다.
+// 이 부분은 기존 $utilities 맵에 바로 병합(merge)하여 코드를 간결하게 만들 수 있습니다.
+$utilities: map-merge(
+  $utilities,
+  (
+    'width': (
+      property: width,
+      class: w-px,
+      // 생성될 클래스 이름: .w-px-1, .w-px-2, ...
+      values: $pixel-widths // 미리 만들어둔 맵을 여기에 할당합니다.,,,,
+    )
+    // 여기에 다른 유틸리티도 추가할 수 있습니다. 예: "height", "margin-top" 등,,,,
+  )
+);
+
+// 최종적으로 Bootstrap 전체를 불러옵니다.
+@import 'bootstrap/scss/bootstrap'; // Import the utility API
 
 html {
   box-sizing: border-box; /* 1. 모든 요소의 박스 계산을 더 쉽게 만듭니다. */
   font-size: 62.5%; /* 2. 1rem = 10px로 설정하여 rem 단위 계산을 쉽게 합니다. */
   scroll-behavior: smooth; /* 3. 페이지 내 링크 이동을 부드럽게 만듭니다. */
+  height: 100vh;
+  width: 100%;
 }
 
 *,
@@ -21,14 +80,28 @@ html {
 body {
   margin: 0; /* 4. 브라우저 기본 마진을 제거합니다. */
   padding: 0; /* 4. 브라우저 기본 패딩을 제거합니다. (필요에 따라) */
-  font-family: 'Pretendard Variable', Pretendard, -apple-system,
-    BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI',
-    'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji',
-    'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif; /* 5. 가독성 좋은 최신 폰트 우선순위로 설정합니다. */
+  height: 100vh;
+  width: 100%;
+
+  font-family: 'Roboto', sans-serif;
   font-size: 1.6rem; /* 2-1. 기본 폰트 크기를 16px로 설정합니다. (1.6 * 10px) */
   line-height: 1.6; /* 6. 줄 간격을 적절하게 설정하여 가독성을 높입니다. */
   color: #212529; /* 7. 너무 진하지 않은 보기 편한 기본 글자색을 설정합니다. */
   background-color: #fff; /* 8. 기본 배경색을 흰색으로 설정합니다. */
   -webkit-font-smoothing: antialiased; /* 9. 폰트를 부드럽게 렌더링합니다. (웹킷 브라우저용) */
   -moz-osx-font-smoothing: grayscale; /* 9. 폰트를 부드럽게 렌더링합니다. (파이어폭스용) */
+}
+
+.roboto-regular {
+  font-family: 'Roboto', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: 'wdth' 100;
+}
+
+.cute-regular {
+  font-family: 'Cute Font', sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }

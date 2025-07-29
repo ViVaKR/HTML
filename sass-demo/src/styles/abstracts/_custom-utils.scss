@@ -1,0 +1,125 @@
+// styles/abstracts/_custom-utils.scss
+@use 'sass:math';
+
+/* Size */
+$width-unit: (
+  'screen': 100dvw,
+);
+
+$height-unit: (
+  'screen': 100dvh,
+);
+
+$values: (
+  // --- 핵심 키워드 ---
+  // --- 2분할 (Halves) ---
+  '1\\/2': math.div(1, 2) * 100%,
+
+  // --- 3분할 (Thirds) ---
+  '1\\/3': math.div(1, 3) * 100%,
+  '2\\/3': math.div(2, 3) * 100%,
+
+  // --- 4분할 (Quarters) ---
+  '1\\/4': math.div(1, 4) * 100%,
+  '2\\/4': math.div(2, 4) * 100%,
+  // .w-1/2와 같지만 편의성을 위해 포함
+  '3\\/4': math.div(3, 4) * 100%,
+
+  // --- 5분할 (Fifths) ---
+  '1\\/5': math.div(1, 5) * 100%,
+  '2\\/5': math.div(2, 5) * 100%,
+  '3\\/5': math.div(3, 5) * 100%,
+  '4\\/5': math.div(4, 5) * 100%,
+
+  // --- 6분할 (Sixths) ---
+  '1\\/6': math.div(1, 6) * 100%,
+  '2\\/6': math.div(2, 6) * 100%,
+  // .w-1/3
+  '3\\/6': math.div(3, 6) * 100%,
+  // .w-1/2
+  '4\\/6': math.div(4, 6) * 100%,
+  // .w-2/3
+  '5\\/6': math.div(5, 6) * 100%,
+
+  // --- 12분할 (Twelfths) - 그리드 시스템의 핵심! ---
+  '1\\/12': math.div(1, 12) * 100%,
+  '2\\/12': math.div(2, 12) * 100%,
+  // .w-1/6
+  '3\\/12': math.div(3, 12) * 100%,
+  // .w-1/4
+  '4\\/12': math.div(4, 12) * 100%,
+  // .w-1/3
+  '5\\/12': math.div(5, 12) * 100%,
+  '6\\/12': math.div(6, 12) * 100%,
+  // .w-1/2
+  '7\\/12': math.div(7, 12) * 100%,
+  '8\\/12': math.div(8, 12) * 100%,
+  // .w-2/3
+  '9\\/12': math.div(9, 12) * 100%,
+  // .w-3/4
+  '10\\/12': math.div(10, 12) * 100%,
+  // .w-5/6
+  '11\\/12': math.div(11, 12) * 100%,
+  '10': 10%,
+  '20': 20%,
+  '30': 30%,
+  '40': 40%,
+  '60': 60%,
+  '70': 70%,
+  '80': 80%,
+  '90': 90%,
+  'auto': auto,
+  'full': 100%
+);
+
+$widths: map-merge(
+  $map1: $values,
+  $map2: $width-unit,
+);
+
+$heights: map-merge(
+  $map1: $values,
+  $map2: $height-unit,
+);
+
+/* Color */
+$new-colors: (
+  'viv': #c22f2f,
+);
+
+// 2. 기존 Bootstrap 유틸리티에 병합
+$utilities: map-merge(
+  $utilities,
+  (
+    'width':
+      map-merge(
+        map-get($utilities, 'width'),
+        (
+          values:
+            map-merge(map-get(map-get($utilities, 'width'), 'values'), $widths),
+        )
+      ),
+    'height':
+      map-merge(
+        map-get($utilities, 'height'),
+        (
+          values:
+            map-merge(
+              map-get(map-get($utilities, 'height'), 'values'),
+              $heights
+            ),
+        )
+      ),
+    'background-color':
+      map-merge(
+        map-get($utilities, 'background-color'),
+        (
+          values:
+            map-merge(
+              map-get(map-get($utilities, 'background-color'), 'values'),
+              $new-colors
+            ),
+        )
+      ),
+  )
+);

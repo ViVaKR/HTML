@@ -1,0 +1,21 @@
+// styles/main.scss
+
+// 1. 기본 설정 및 도구 (변수, 믹스인 등)
+// (지금은 없지만, 나중에 커스텀 변수 파일(_variables.scss)을 만든다면 여기에 @import 합니다.)
+
+// 2. 외부 라이브러리 (Bootstrap)
+// Bootstrap과 관련된 모든 설정 및 임포트는 이 파일 하나가 책임집니다.
+@import 'vendors/bootstrap';
+
+// 3. 기본 스타일 (리셋, 타이포그래피)
+// 라이브러리 다음에 와야 라이브러리 스타일을 덮어쓸 수 있습니다.
+@import 'base/reset';
+@import 'base/typography';
+
+// 4. 컴포넌트, 레이아웃, 페이지별 스타일 등...
+// 프로젝트가 커지면 여기에 추가적인 폴더와 파일들을 import 합니다.
+// ex: @import 'components/buttons';
+// ex: @import 'layout/header';
+@import 'abstracts/mixins';
+
+@import 'abstracts/oklch';

@@ -1,0 +1,7 @@
+@mixin wd($width) {
+  width: $width;
+}
+
+.custom-width {
+  @include wd(200px);
+}
