@@ -1,5 +1,7 @@
 // styles/abstracts/_custom-utils.scss
 @use 'sass:math';
+@import 'viv-colors';
+@import 'bootstrap/scss/bootstrap';
 
 /* Size */
 $width-unit: (
@@ -83,9 +85,9 @@ $heights: map-merge(
 );
 
 /* Color */
-$new-colors: (
-  'viv': #c22f2f,
-);
+// $custom-colors: (
+//   'red-400': oklch(0.704 0.191 22.216),
+// );
 
 // 2. 기존 Bootstrap 유틸리티에 병합
 $utilities: map-merge(
@@ -117,7 +119,18 @@ $utilities: map-merge(
           values:
             map-merge(
               map-get(map-get($utilities, 'background-color'), 'values'),
-              $new-colors
+              $custom-viv-colors
+            ),
+        )
+      ),
+    'color':
+      map-merge(
+        map-get($utilities, 'color'),
+        (
+          values:
+            map-merge(
+              map-get(map-get($utilities, 'color'), 'values'),
+              $custom-viv-colors
             ),
         )
       ),
