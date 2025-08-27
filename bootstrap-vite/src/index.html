@@ -4,11 +4,183 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Bootstrap w/ Vite</title>
+        <title>Bootstrap With Vite</title>
     </head>
 
     <body>
         <div class="container py-4 px-3 mx-auto">
+            <!-- canvas -->
+            <canvas id="canvas1" width="150" height="150"></canvas>
+
+
+            <!-- var -->
+            <div class="row">
+                <div class="col">
+                    <!-- details -->
+                    <details>
+                        <summary>요약내용보기</summary>
+                        <p>
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Atque quidem optio enim repellat
+                            ipsum
+                            beatae libero sunt ipsam corporis, magni dignissimos nam aliquid ut vero doloribus.
+                            Consectetur
+                            perspiciatis alias ad!
+                        </p>
+                    </details>
+                    <hr>
+                    <h5>var</h5>
+                    <p>
+                        <var>E</var> = <var>m</var><var>c</var><sup>2</sup>
+
+                    </p>
+                    <hr>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <p>
+                        복사하려면
+                        <kbd>Ctrl</kbd>
+                        +
+                        <kbd>C</kbd>
+                        를 누르세요.
+                    </p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <p>
+                        <i>i tag</i>
+                        is the most popular filler text in history.
+                    </p>
+                    <p>
+                        <em>em</em> tag
+                    </p>
+                    <p>
+                        <strong>strong</strong> tag
+                    </p>
+                    <p><mark>mark</mark> tag</p>
+                    <p><cite>cite</cite> tag</p>
+                    <p><dfn>dvn</dfn> tag</p>
+                    <dialog>This is an open dialog window</dialog>
+
+                    <button type="button"
+                            onclick="openDialog()"
+                            class="btn btn-primary">Show Dialog</button>
+
+                    <button
+                            type="button"
+                            onclick="closeDialog()"
+                            class="btn btn-warning">
+                        Close Dialog
+                    </button>
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <form action="#">
+                        <legend>Legend</legend>
+
+                        <embed src="images/female.png" type="image/png">
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit repellat exercitationem
+                            voluptatum optio! In sint minima saepe reiciendis et eligendi, consequatur adipisci dolore
+                            quo? Voluptatem sit impedit praesentium voluptate quidem?
+                        </p>
+                    </form>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <aside>
+                        <p>
+                            문서의 주요 내용과 간접적으로만 연관된 부분을 나타냄, 주로 사이드바 혹인 콜아웃 박스로 표현
+                        </p>
+                    </aside>
+
+                    <article>
+                        <p>
+                            <strong>article</strong> 독립적으로 구분해 배포하거나 재사용할 수 있는 구획을 나타냄
+                        </p>
+                    </article>
+                    <p>
+                        You can use <abbr title="World Wide Web">WWW</abbr> to style your
+                    </p>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col">
+                    <div class="card" style="width: 36rem">
+                        <img src="images/robot-man.webp" class="card-img-top" alt="배경화면">
+
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <h6 class="card-subtitle mb-2 text-body-secondary">Subtitle</h6>
+
+                            <figure>
+                                <blockquote class="blockquote">
+                                    <p>A well-known quote, contained in a blockquote element.</p>
+                                </blockquote>
+                                <figcaption class="blockquote-footer">
+                                    Someone famous in
+                                    <cite title="Source Title">Source Title</cite>
+
+                                </figcaption>
+                            </figure>
+                        </div>
+
+
+                        <div class="card-header">Featured</div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">An item</li>
+                            <li class="list-group-item">A second item</li>
+                            <li class="list-group-item">A third item</li>
+                        </ul>
+                        <div class="card-footer">Card footer</div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <!-- Card -->
+                    <div class="card" style="width: 18rem">
+                        <img src="images/avata.png" class="card-img-top" alt="man">
+                        <div class="card-body">
+                            <h5 class="card-title">Card Title</h5>
+                            <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
+                            <p class="card-text">
+                                Some quick example text to build on the card title and make up the bulk of the card's
+                                content.
+                            </p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card" style="width: 18rem">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
+                            <p class="card-text">
+                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Harum ex perferendis
+                                blanditiis nisi cupiditate sed dolorem architecto ea consequuntur, est eos assumenda
+                                optio quo vitae totam reiciendis. Laborum, cumque. Numquam?
+                            </p>
+                            <a href="#" class="card-link">Card link</a>
+                            <a href="#" class="card-link">Another link</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <div class="row">
                 <div class="col">
@@ -120,6 +292,7 @@
             </div>
         </div>
         <script type="module" src="./js/main.js"></script>
+        <script src="./js/index.js"></script>
     </body>
 
 </html>
