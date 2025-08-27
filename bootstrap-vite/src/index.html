@@ -9,8 +9,18 @@
 
     <body>
         <div class="container py-4 px-3 mx-auto">
-            <!-- canvas -->
-            <canvas id="canvas1" width="150" height="150"></canvas>
+
+            <div class="row">
+                <div class="col">
+                    <span id="result-display" style="font-weight: bold; color:magenta;"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <!-- canvas -->
+                    <canvas id="canvas1" width="150" height="150"></canvas>
+                </div>
+            </div>
 
 
             <!-- var -->
@@ -197,10 +207,10 @@
                                 <div class="form-text">제공되는 이메일 주소는 보호됩니다.</div>
                             </div>
                             <div class="mb-3">
-                                <label for="password" class="form-lavel">비밀번호</label>
+                                <label for="pwd" class="form-lavel">비밀번호</label>
                                 <input type="password"
                                        placeholder="비밀번호"
-                                       id=" password"
+                                       id="pwd"
                                        class="form-control">
                                 <div class="form-text">
                                     비밀번호는 8-20 자 범위로 문자와 숫자 특수문자를 포함 하여 입력해 주세요.
@@ -241,7 +251,7 @@
 
                             <div class="mb-3">
                                 <label for="file" class="form-label">파일첨부</label>
-                                <input type="file" class="form-control form-control-sm">
+                                <input type="file" id="file" class="form-control form-control-sm">
 
                             </div>
 
@@ -254,9 +264,9 @@
                                        class="form-control form-control-color">
                             </div>
                             <div class="mb-3">
-                                <label for="dataList" class="form-label">도시선택</label>
+                                <label for="datalist" class="form-label">도시선택</label>
                                 <input type="text"
-                                       id="dataLiat"
+                                       id="datalist"
                                        list="datalistOptions"
                                        class="form-control">
                                 <datalist id="datalistOptions">
@@ -291,7 +301,9 @@
                 </div>
             </div>
         </div>
+
         <script type="module" src="./js/main.js"></script>
+
         <script src="./js/index.js"></script>
     </body>
 

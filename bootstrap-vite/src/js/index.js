@@ -1,5 +1,4 @@
-
-
+// math.js
 function openDialog() {
     const dialog = document.querySelector('dialog');
     dialog.show();
