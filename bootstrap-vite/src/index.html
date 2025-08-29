@@ -1,310 +1,425 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Bootstrap With Vite</title>
-    </head>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1" />
+    <title>Bootstrap With Vite</title>
+  </head>
 
-    <body>
-        <div class="container py-4 px-3 mx-auto">
+  <body>
+    <div class="container py-4 px-3 mx-auto">
+      <div class="row">
+        <div class="col">
+          <h5>
+            &lt;abbr&gt;
+          </h5>
+          <p>
+            2&sup3;
+            멋진 <abbr title="Hypertext Markup Language">HTML</abbr>입니다.
+          </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <span
+                id="result-display"
+                style="font-weight: bold; color: magenta"></span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <!-- canvas -->
+          <canvas
+                  id="canvas1"
+                  width="150"
+                  height="150"></canvas>
+        </div>
+      </div>
 
-            <div class="row">
-                <div class="col">
-                    <span id="result-display" style="font-weight: bold; color:magenta;"></span>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <!-- canvas -->
-                    <canvas id="canvas1" width="150" height="150"></canvas>
-                </div>
-            </div>
+      <!-- var -->
+      <div class="row">
+        <div class="col">
+          <!-- details -->
+          <details>
+            <summary>요약내용보기</summary>
+            <p>
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Atque
+              quidem optio enim repellat ipsum beatae libero sunt ipsam
+              corporis, magni dignissimos nam aliquid ut vero doloribus.
+              Consectetur perspiciatis alias ad!
+            </p>
+          </details>
+          <hr />
+          <h5>var</h5>
+          <p>
+            <var>E</var>
+            =
+            <var>m</var>
+            <var>c</var>
+            <sup>2</sup>
+          </p>
+          <hr />
+        </div>
+      </div>
 
+      <div class="row">
+        <div class="col">
+          <p>
+            복사하려면
+            <kbd>Ctrl</kbd>
+            +
+            <kbd>C</kbd>
+            를 누르세요.
+          </p>
+        </div>
+      </div>
 
-            <!-- var -->
-            <div class="row">
-                <div class="col">
-                    <!-- details -->
-                    <details>
-                        <summary>요약내용보기</summary>
-                        <p>
-                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Atque quidem optio enim repellat
-                            ipsum
-                            beatae libero sunt ipsam corporis, magni dignissimos nam aliquid ut vero doloribus.
-                            Consectetur
-                            perspiciatis alias ad!
-                        </p>
-                    </details>
-                    <hr>
-                    <h5>var</h5>
-                    <p>
-                        <var>E</var> = <var>m</var><var>c</var><sup>2</sup>
+      <div class="row">
+        <div class="col">
+          <p>
+            <i>i tag</i>
+            is the most popular filler text in history.
+          </p>
+          <p>
+            <em>em</em>
+            tag
+          </p>
+          <p>
+            <strong>strong</strong>
+            tag
+          </p>
+          <p>
+            <mark>mark</mark>
+            tag
+          </p>
+          <p>
+            <cite>cite</cite>
+            tag
+          </p>
+          <p>
+            <dfn>dvn</dfn>
+            tag
+          </p>
+          <dialog>This is an open dialog window</dialog>
 
-                    </p>
-                    <hr>
-                </div>
-            </div>
+          <button
+                  type="button"
+                  onclick="openDialog()"
+                  class="btn btn-primary">
+            Show Dialog
+          </button>
 
-            <div class="row">
-                <div class="col">
-                    <p>
-                        복사하려면
-                        <kbd>Ctrl</kbd>
-                        +
-                        <kbd>C</kbd>
-                        를 누르세요.
-                    </p>
-                </div>
-            </div>
+          <button
+                  type="button"
+                  onclick="closeDialog()"
+                  class="btn btn-warning">
+            Close Dialog
+          </button>
+        </div>
+      </div>
 
-            <div class="row">
-                <div class="col">
-                    <p>
-                        <i>i tag</i>
-                        is the most popular filler text in history.
-                    </p>
-                    <p>
-                        <em>em</em> tag
-                    </p>
-                    <p>
-                        <strong>strong</strong> tag
-                    </p>
-                    <p><mark>mark</mark> tag</p>
-                    <p><cite>cite</cite> tag</p>
-                    <p><dfn>dvn</dfn> tag</p>
-                    <dialog>This is an open dialog window</dialog>
+      <div class="row">
+        <div class="col">
+          <form action="#">
+            <legend>Legend</legend>
 
-                    <button type="button"
-                            onclick="openDialog()"
-                            class="btn btn-primary">Show Dialog</button>
+            <embed
+                   src="images/female.png"
+                   type="image/png" />
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit
+              repellat exercitationem voluptatum optio! In sint minima saepe
+              reiciendis et eligendi, consequatur adipisci dolore quo?
+              Voluptatem sit impedit praesentium voluptate quidem?
+            </p>
+          </form>
+        </div>
+      </div>
 
-                    <button
-                            type="button"
-                            onclick="closeDialog()"
-                            class="btn btn-warning">
-                        Close Dialog
-                    </button>
+      <div class="row">
+        <div class="col">
+          <aside>
+            <p>
+              문서의 주요 내용과 간접적으로만 연관된 부분을 나타냄, 주로
+              사이드바 혹인 콜아웃 박스로 표현
+            </p>
+          </aside>
 
-                </div>
-            </div>
+          <article>
+            <p>
+              <strong>article</strong>
+              독립적으로 구분해 배포하거나 재사용할 수 있는 구획을 나타냄
+            </p>
+          </article>
+          <p>
+            You can use
+            <abbr title="World Wide Web">WWW</abbr>
+            to style your
+          </p>
+        </div>
+      </div>
 
-            <div class="row">
-                <div class="col">
-                    <form action="#">
-                        <legend>Legend</legend>
+      <div class="row mb-3">
+        <div class="col">
+          <div
+               class="card"
+               style="width: 36rem">
+            <img
+                 src="images/robot-man.webp"
+                 class="card-img-top"
+                 alt="배경화면" />
 
-                        <embed src="images/female.png" type="image/png">
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit repellat exercitationem
-                            voluptatum optio! In sint minima saepe reiciendis et eligendi, consequatur adipisci dolore
-                            quo? Voluptatem sit impedit praesentium voluptate quidem?
-                        </p>
-                    </form>
-                </div>
-            </div>
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <h6 class="card-subtitle mb-2 text-body-secondary">Subtitle</h6>
 
-            <div class="row">
-                <div class="col">
-                    <aside>
-                        <p>
-                            문서의 주요 내용과 간접적으로만 연관된 부분을 나타냄, 주로 사이드바 혹인 콜아웃 박스로 표현
-                        </p>
-                    </aside>
-
-                    <article>
-                        <p>
-                            <strong>article</strong> 독립적으로 구분해 배포하거나 재사용할 수 있는 구획을 나타냄
-                        </p>
-                    </article>
-                    <p>
-                        You can use <abbr title="World Wide Web">WWW</abbr> to style your
-                    </p>
-                </div>
-            </div>
-
-            <div class="row mb-3">
-                <div class="col">
-                    <div class="card" style="width: 36rem">
-                        <img src="images/robot-man.webp" class="card-img-top" alt="배경화면">
-
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <h6 class="card-subtitle mb-2 text-body-secondary">Subtitle</h6>
-
-                            <figure>
-                                <blockquote class="blockquote">
-                                    <p>A well-known quote, contained in a blockquote element.</p>
-                                </blockquote>
-                                <figcaption class="blockquote-footer">
-                                    Someone famous in
-                                    <cite title="Source Title">Source Title</cite>
-
-                                </figcaption>
-                            </figure>
-                        </div>
-
-
-                        <div class="card-header">Featured</div>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item">An item</li>
-                            <li class="list-group-item">A second item</li>
-                            <li class="list-group-item">A third item</li>
-                        </ul>
-                        <div class="card-footer">Card footer</div>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="row">
-                <div class="col">
-                    <!-- Card -->
-                    <div class="card" style="width: 18rem">
-                        <img src="images/avata.png" class="card-img-top" alt="man">
-                        <div class="card-body">
-                            <h5 class="card-title">Card Title</h5>
-                            <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
-                            <p class="card-text">
-                                Some quick example text to build on the card title and make up the bulk of the card's
-                                content.
-                            </p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col">
-                    <div class="card" style="width: 18rem">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
-                            <p class="card-text">
-                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Harum ex perferendis
-                                blanditiis nisi cupiditate sed dolorem architecto ea consequuntur, est eos assumenda
-                                optio quo vitae totam reiciendis. Laborum, cumque. Numquam?
-                            </p>
-                            <a href="#" class="card-link">Card link</a>
-                            <a href="#" class="card-link">Another link</a>
-                        </div>
-                    </div>
-                </div>
+              <figure>
+                <blockquote class="blockquote">
+                  <p>A well-known quote, contained in a blockquote element.</p>
+                </blockquote>
+                <figcaption class="blockquote-footer">
+                  Someone famous in
+                  <cite title="Source Title">Source Title</cite>
+                </figcaption>
+              </figure>
             </div>
 
-            <div class="row">
-                <div class="col">
-                    <form>
-                        <fieldset>
-                            <legend>Form</legend>
+            <div class="card-header">Featured</div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">An item</li>
+              <li class="list-group-item">A second item</li>
+              <li class="list-group-item">A third item</li>
+            </ul>
+            <div class="card-footer">Card footer</div>
+          </div>
+        </div>
+      </div>
 
-                            <div class="mb-3">
-                                <label for="email" id="emailLavel" class="form-label">이메일 주소</label>
-                                <input type="email"
-                                       placeholder="이메일 주소"
-                                       class="form-control"
-                                       id="email">
-                                <div class="form-text">제공되는 이메일 주소는 보호됩니다.</div>
-                            </div>
-                            <div class="mb-3">
-                                <label for="pwd" class="form-lavel">비밀번호</label>
-                                <input type="password"
-                                       placeholder="비밀번호"
-                                       id="pwd"
-                                       class="form-control">
-                                <div class="form-text">
-                                    비밀번호는 8-20 자 범위로 문자와 숫자 특수문자를 포함 하여 입력해 주세요.
-                                </div>
-                            </div>
-
-                            <!-- CheckBox -->
-                            <div class="mb-3 form-check">
-                                <input type="checkbox"
-                                       value=""
-                                       class="form-check-input"
-                                       id="checkbox">
-                                <label for="checkbox" class="form-check-lavel">Check me out</label>
-                            </div>
-
-                            <!-- Radios -->
-
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="radioDefault" id="radioDefault1">
-                                <label class="form-check-label" for="radioDefault1">
-                                    Default radio
-                                </label>
-                            </div>
-
-                            <div class="form-check">
-                                <input class="form-check-input"
-                                       type="radio"
-                                       name="radioDefault"
-                                       id="radioDefault2"
-                                       checked>
-                                <label class="form-check-label" for="radioDefault2">
-                                    Default checked radio
-                                </label>
-                            </div>
-
-
-
-
-                            <div class="mb-3">
-                                <label for="file" class="form-label">파일첨부</label>
-                                <input type="file" id="file" class="form-control form-control-sm">
-
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="color" class="form-label">색상선택</label>
-                                <input type="color"
-                                       id="color"
-                                       value="#563d7c"
-                                       title="색 선택"
-                                       class="form-control form-control-color">
-                            </div>
-                            <div class="mb-3">
-                                <label for="datalist" class="form-label">도시선택</label>
-                                <input type="text"
-                                       id="datalist"
-                                       list="datalistOptions"
-                                       class="form-control">
-                                <datalist id="datalistOptions">
-                                    <option value="San Francisco">샌프란시스코</option>
-
-                                    <option value="New York">뉴욕</option>
-                                    <option value="Seattle">시에틀</option>
-                                    <option value="Los Angeles">로스엔젤레스</option>
-                                    <option value="Chicago">시카고</option>
-                                </datalist>
-                            </div>
-                            <div class="mb-3">
-                                <select id="selection"
-                                        class="form-select form-select-sm">
-                                    <option selected>선택</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
-                                </select>
-                            </div>
-                            <div class="mb-3">
-                                <label for="textArea" class="form-label">본문</label>
-                                <textarea name=""
-                                          rows="3"
-                                          class="form-control"
-                                          id="textArea"></textarea>
-                            </div>
-
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </fieldset>
-                    </form>
-                </div>
+      <div class="row">
+        <div class="col">
+          <!-- Card -->
+          <div
+               class="card"
+               style="width: 18rem">
+            <img
+                 src="images/avata.png"
+                 class="card-img-top"
+                 alt="man" />
+            <div class="card-body">
+              <h5 class="card-title">Card Title</h5>
+              <h6 class="card-subtitle mb-2 text-body-secondary">
+                Card subtitle
+              </h6>
+              <p class="card-text">
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </p>
+              <a
+                 href="#"
+                 class="btn btn-primary">
+                Go somewhere
+              </a>
             </div>
+          </div>
         </div>
 
-        <script type="module" src="./js/main.js"></script>
+        <div class="col">
+          <div
+               class="card"
+               style="width: 18rem">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <h6 class="card-subtitle mb-2 text-body-secondary">
+                Card subtitle
+              </h6>
+              <p class="card-text">
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Harum
+                ex perferendis blanditiis nisi cupiditate sed dolorem architecto
+                ea consequuntur, est eos assumenda optio quo vitae totam
+                reiciendis. Laborum, cumque. Numquam?
+              </p>
+              <a
+                 href="#"
+                 class="card-link">
+                Card link
+              </a>
+              <a
+                 href="#"
+                 class="card-link">
+                Another link
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
 
-        <script src="./js/index.js"></script>
-    </body>
+      <div class="row">
+        <div class="col">
+          <form>
+            <fieldset>
+              <legend>Form</legend>
+
+              <div class="mb-3">
+                <label
+                       for="email"
+                       id="emailLavel"
+                       class="form-label">
+                  이메일 주소
+                </label>
+                <input
+                       type="email"
+                       placeholder="이메일 주소"
+                       class="form-control"
+                       id="email" />
+                <div class="form-text">제공되는 이메일 주소는 보호됩니다.</div>
+              </div>
+              <div class="mb-3">
+                <label
+                       for="pwd"
+                       class="form-lavel">
+                  비밀번호
+                </label>
+                <input
+                       type="password"
+                       placeholder="비밀번호"
+                       id="pwd"
+                       class="form-control" />
+                <div class="form-text">
+                  비밀번호는 8-20 자 범위로 문자와 숫자 특수문자를 포함 하여
+                  입력해 주세요.
+                </div>
+              </div>
+
+              <!-- CheckBox -->
+              <div class="mb-3 form-check">
+                <input
+                       type="checkbox"
+                       value=""
+                       class="form-check-input"
+                       id="checkbox" />
+                <label
+                       for="checkbox"
+                       class="form-check-lavel">
+                  Check me out
+                </label>
+              </div>
+
+              <!-- Radios -->
+
+              <div class="form-check">
+                <input
+                       class="form-check-input"
+                       type="radio"
+                       name="radioDefault"
+                       id="radioDefault1" />
+                <label
+                       class="form-check-label"
+                       for="radioDefault1">
+                  Default radio
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input
+                       class="form-check-input"
+                       type="radio"
+                       name="radioDefault"
+                       id="radioDefault2"
+                       checked />
+                <label
+                       class="form-check-label"
+                       for="radioDefault2">
+                  Default checked radio
+                </label>
+              </div>
+
+              <div class="mb-3">
+                <label
+                       for="file"
+                       class="form-label">
+                  파일첨부
+                </label>
+                <input
+                       type="file"
+                       id="file"
+                       class="form-control form-control-sm" />
+              </div>
+
+              <div class="mb-3">
+                <label
+                       for="color"
+                       class="form-label">
+                  색상선택
+                </label>
+                <input
+                       type="color"
+                       id="color"
+                       value="#563d7c"
+                       title="색 선택"
+                       class="form-control form-control-color" />
+              </div>
+              <div class="mb-3">
+                <label
+                       for="datalist"
+                       class="form-label">
+                  도시선택
+                </label>
+                <input
+                       type="text"
+                       id="datalist"
+                       list="datalistOptions"
+                       class="form-control" />
+                <datalist id="datalistOptions">
+                  <option value="San Francisco">샌프란시스코</option>
+
+                  <option value="New York">뉴욕</option>
+                  <option value="Seattle">시에틀</option>
+                  <option value="Los Angeles">로스엔젤레스</option>
+                  <option value="Chicago">시카고</option>
+                </datalist>
+              </div>
+              <div class="mb-3">
+                <select
+                        id="selection"
+                        class="form-select form-select-sm">
+                  <option selected>선택</option>
+                  <option value="1">One</option>
+                  <option value="2">Two</option>
+                  <option value="3">Three</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label
+                       for="textArea"
+                       class="form-label">
+                  본문
+                </label>
+                <textarea
+                          name=""
+                          rows="3"
+                          class="form-control"
+                          id="textArea"></textarea>
+              </div>
+
+              <button
+                      type="submit"
+                      class="btn btn-primary">
+                Submit
+              </button>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script
+            type="module"
+            src="./js/main.js"></script>
+
+    <script src="./js/index.js"></script>
+  </body>
 
 </html>
