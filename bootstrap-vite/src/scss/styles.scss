@@ -1,5 +1,5 @@
 // Import all of Bootstrap's CSS
-@import './reset.css';
+// @import './reset.css';
 
 @import '~bootstrap/scss/bootstrap';
 
@@ -33,3 +33,10 @@ body {
   color: #333;
   -webkit-font-smoothing: antialiased; /* 맥에서 폰트 렌더링 개선 */
 }
+
+// code {
+//   background-color: #f4f4f4;
+//   color: #d63384;
+//   padding: 2px 4px;
+//   border-radius: 4px;
+// }
