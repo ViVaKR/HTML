@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+      /* import 규칙은, @charset 규칙을 제외하고 모든 다른 종류의 규칙보다 선행 되어야 함. */
+      @import url("styles.css");
+    </style>
+
+    <title>CSS Demo</title>
+  </head>
+
+  <body>
+
+    <div class="container">
+      <h1>CSS</h1>
+      <header>Header Part</header>
+      <div id="before-item">가상요소 아이템 데모</div>
+      <p class="demo-var">
+        var(변수이름)를 이용하여 색상 적용
+      </p>
+
+      <div class="one">
+        one
+        <div class="two">
+          <div class="three">three</div>
+          <div class="four">four</div>
+        </div>
+      </div>
+
+      <!-- 반응형 폰트 사이즈 -->
+      <p id="responsive-font-size">
+        반응형 폰트 사이즈 (max-size: 1024px)
+      </p>
+
+      <!-- 대체 변수 값 -->
+      <p id="alt-var">
+        대체변수를 통한 적용
+      </p>
+
+      <p class="story-script">
+        Hello, World
+      </p>
+    </div>
+  </body>
+
+</html>

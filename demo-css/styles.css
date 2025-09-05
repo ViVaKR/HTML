@@ -1,0 +1,110 @@
+/*
+  본 CSS 는 페이지의 기본 스타일을 정의함.
+  선택자
+
+  !important
+
+  CSS 변수는 CSS Custom Properties 라는 이름으로 2015년에 도입되었고,
+
+  - 문서전체에서 사용할 변수 설정 선택자 : `:root` 또는 `:body` 로 사용하면됨.
+  - 만약 `.container` 라는 클래스 내부의 자손 요소에서만 사용할 변수는 `.container` 를 사용함.
+  - 변수 이름은 기호 `--` 기호 뒤에 사용할 변수이름을 사용함.
+
+*/
+
+/* import */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Story+Script&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Cute+Font&display=swap');
+
+/* CSS 변수 */
+:root {
+  --primary-color: #8b008b;
+  --happy-color: #00a0e9;
+  --font-size: 2em;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 1rem 0.5rem;
+  /* font-family: 'Archivo Black', 'Cute Font', sans-serif; */
+  font-family: 'Inter', 'Cute Font', sans-serif;
+  background-color: rgba(213, 98, 98, 0.2);
+}
+
+.container {
+  width: 100%;
+  padding: 10px;
+  background-color: gray;
+}
+
+.story-script {
+  font-family: 'Story Script', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+#alt-var {
+  font-size: 2em;
+  color: var(--good-color, #3b3b8a);
+}
+
+#responsive-font-size {
+  font-size: var(--font-size);
+}
+
+.two {
+  --test: 10px;
+}
+
+.three {
+  --test: 2em;
+}
+
+div {
+  font-size: var(--test);
+}
+
+#before-item {
+  width: 90%;
+  height: 24px;
+  background-color: rgba(255, 0, 0, 0.2);
+}
+#before-item::before {
+  content: '🏋️‍♂️ ';
+}
+
+#before-item::after {
+  content: ' ✨';
+}
+
+.demo-var {
+  color: var(--primary-color);
+}
+/* 반응형 설정 */
+@media (max-width: 768px) {
+  /* 작은 화면에서의 스타일 */
+  header {
+    background-color: #555;
+  }
+}
+
+@media (max-width: 1024px) {
+  :root {
+    --font-size: 1em;
+  }
+}
