@@ -1,0 +1,8 @@
+li::marker {
+  content: '💕 ';
+  font-size: 0.8em;
+}
+
+input::placeholder {
+  font-style: italic;
+}

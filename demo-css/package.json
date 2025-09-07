@@ -1,0 +1,12 @@
+{
+  "name": "demo-css",
+  "version": "1.0.0",
+  "description": "- `@import url(\"외부 CSS 파일의 URL\") list-of-media-queries;`",
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
