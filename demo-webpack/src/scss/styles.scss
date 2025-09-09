@@ -1,0 +1,380 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Cute+Font&display=swap');
+
+@import url('global.scss');
+
+// * {
+//   margin: 0;
+//   padding: 0;
+//   box-sizing: border-box;
+// }
+
+// html {
+//   width: 100%;
+//   height: 100%;
+// }
+
+.container {
+  margin: 0;
+  padding: 0.3rem;
+  background-color: rgb(233, 211, 183, 0.3);
+}
+
+hr {
+  margin: 1.5rem;
+}
+
+img.robot-man {
+  filter: blur(1px);
+}
+
+/*
+  --> grid
+*/
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  border: 2px solid #333;
+  padding: 10px;
+  gap: 10px;
+  .grid-item {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px;
+  }
+}
+
+/*
+  --> display
+
+  block : 크기지정이 되며, 줄바꿈이 일어남
+  inline : 크기지정이 안되며, 줄바꿈도 일어나지 않음, 다만 input button 등은 너비와 높이 지정 가능
+  inline-block : 크기지정 가능, 줄바꿈 없음
+  flex
+  inline-flex
+  grid
+  inline-grid
+  flow-root
+  table
+  list-item
+
+  none
+  contents
+
+  table-row
+  table-cell
+  table-caption
+
+  block flex
+  block grid
+  inline flex
+  inline grid
+
+  inherit
+  initial
+  unset
+  revert
+  revert-layer
+
+
+*/
+
+ul.cursor-types {
+  margin: 0.7em 0;
+  padding: 0;
+  list-style-type: none;
+  li {
+    width: 200px;
+    padding: 0.5em 0.7em;
+    border-radius: 5px;
+    margin-bottom: 0.7em;
+    transition: all 0.2s;
+    border: 1px solid black;
+    color: black !important;
+    &:hover {
+      color: red !important;
+      border: 1px solid red !important;
+      box-shadow: 0 1px 1px red;
+    }
+  }
+}
+// caret-color
+
+/*
+  --> box-sizing
+  * content-box : 콘텐츠 영역
+  * padding
+  * border
+  * border-box : 콘텐츠 + 패딩 + 테두리
+  * margin
+*/
+div.box-shadow-1 {
+  width: 480px;
+  height: 120px;
+  border-radius: 0.5em;
+  background-color: skyblue;
+  border: 5px solid darkcyan;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2em;
+  box-shadow: 10px 15px 7px -5px magenta; //
+}
+
+div.rect-2 {
+  width: 200px;
+  aspect-ratio: 1;
+
+  background-color: skyblue;
+  border: 5px solid darkcyan;
+  border-radius: 60px / 40px; // 타원형
+}
+
+div.rect-1 {
+  width: 200px;
+  aspect-ratio: 1;
+
+  background-color: skyblue;
+  border: 5px solid darkcyan;
+  border-radius: 20px 70px; // 좌상, 우상, 우하, 좌하 (시계방향)
+}
+
+div.bg-layer {
+  width: 100%;
+  aspect-ratio: 1;
+  background: url('assets/robot-man.webp') no-repeat center center / cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .front-text {
+    width: 50%;
+    aspect-ratio: 3/1;
+    border: 3px solid white;
+    border-radius: 1rem;
+    background-color: transparent;
+    backdrop-filter: brightness(50%);
+    // backdrop-filter: grayscale(100%);
+    // backdrop-filter: blur(4px) sepia(80%);
+    // backdrop-filter: blur(4px);
+    color: white;
+    font-size: 3rem;
+    display: flex;
+    padding: 0;
+    margin: 0;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+div[id='bg-1'] {
+  width: 100%;
+  height: 200px;
+  background: url('assets/robot-man.webp') no-repeat center center / cover;
+}
+
+input[id='chk'] {
+  accent-color: red;
+}
+
+select[id='select1'] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 300px;
+  padding: 0.8em 1.5em;
+  border: none;
+
+  // background-image: url('assets/male_default.png');
+  // background-repeat: no-repeat;
+  // background-position: 96% center; /* x-pos, y-pos */
+  // background-size: 1rem;
+
+  /*
+    * cover : 가로세로 비율을 유지 하면서 요소를 채울때까지 확대/축소
+    * contain : 가로 세로 비율을 지지 유지하면서 요소를 벗어나지 않는 최대 크기로 확대/축소, 빈공간이 생길 수 있음
+    * initial : 기본값으로 설정
+    * inherit : 부모 요소의 속성값 상속
+    * auto : 기본값, 이지지 크기 유지
+  */
+
+  // --> background: url('../path/to/image') no-repeat x-pos y-pos / size:
+  background: url('assets/male_default.png') no-repeat 96% center / 1rem;
+}
+
+#box1 {
+  background-color: orange;
+  width: 200px;
+  /*
+    height 가 지정되지 않았을 경우
+    height 는 auto 입니다.
+    - 반드시 width, height 중 하난는 auto 여야 aspect-ratio 가 정상 작동함.
+    - align-items: stretch 를 적용받는 요소일 경우 작동하지 않음.
+    - 백분율 단위 값ㅇ르 사용할 경우 작동안됨.
+  */
+  aspect-ratio: 1; // 1/1 과 동일
+  margin: 10px;
+}
+section p:nth-of-type(2) {
+  background-color: yellowgreen;
+}
+
+section div:nth-of-type(2) {
+  background-color: orange;
+}
+
+#nth-childs > li:nth-child(2n + 1) {
+  color: rgba(255, 0, 255, 0.3);
+}
+
+#list1 > li:first-child {
+  color: maroon;
+}
+
+#list1 > li:last-child {
+  background-color: maroon;
+  color: white;
+}
+
+:lang(ko) {
+  background-color: #333;
+  color: white;
+}
+/*
+
+* 자손 선택자 (자식, 자식의자식, 자식의 자식의 자식..등 깊이에 무관): 선택자1 선택자2
+* 자식 선택자 (직계 자식만 선택): 선택자1 > 선택자2
+* 이후 모든 형제 선택자, 선택자1은 제외 : 선택자1 ~ 선택자2
+* 다음 형제 선택자, 선택자1은 제외 : 선택자1 + 선택자2
+
+*/
+
+p#first1 ~ p {
+  color: red;
+}
+
+p#first1 + p {
+  color: green;
+}
+
+// :has()
+h4:has(+ p) {
+  background-color: rgb(16, 114, 163);
+  color: white;
+  padding: 0.5em;
+}
+
+// :not()
+li:not(.not-bg1, .not-bg2, #list1 > li, #nth-childs > li) {
+  color: rgb(255, 0, 195);
+}
+
+// :is(h4, p)
+// :where(h4, p)
+// h4 와 p 요소의 배경색을 선택합니다.
+// is 는 우선순위가 높고, where 는 없음
+
+fieldset {
+  padding: 1em;
+  box-sizing: border-box;
+  border-radius: 0.5em;
+  &:focus-within {
+    background-color: gold;
+  }
+}
+
+// :focus
+// 포커스란?
+// 요소가 키보드 입력이나 상호작용을 받을 준비가 된 상태를 의미함
+// 주로 사용자가 탭키나 클릭을 통해 요소에 접근했을 때 발생함.
+input#user-name {
+  box-sizing: border-box;
+  width: auto;
+
+  padding: 0.8em 1.5em;
+
+  border: 1px solid gray;
+
+  border-radius: 0.5em;
+
+  font-size: 1rem;
+
+  &:focus {
+    background-color: rgba(0, 255, 255, 0.3);
+  }
+}
+
+// :link
+// 브라우저의 방문 기록을 기준으로 아직 방문하지 않은 링크를 선택함.
+
+a:link {
+  color: rgba(255, 0, 255, 0.6);
+}
+
+// :visited
+// 이미 방문한 링크를 선택함
+a:visited {
+  color: rgb(7, 97, 7);
+}
+
+a {
+  text-decoration: none;
+}
+// ::backdrop
+// 최상위 레이어는 자바스크립트로 렌더링될 떼에만 자동으로 생성됨
+dialog::backdrop {
+  background-color: rgba(255, 0, 255, 0.3);
+}
+
+dialog {
+  width: 380px;
+  font-size: 2em;
+}
+
+button {
+  padding: 0.8em 1.5em;
+  border: none;
+  border-radius: 0.5em;
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgba(255, 0, 255, 0.3);
+  }
+
+  // 마우스 커서를 올려놓고 누르는 순간 붙터 떼는 시점 까지
+  &:active {
+    background-color: orange;
+  }
+}
+
+/*
+  ! 배치 순서
+  :link
+  :visited
+  :hover
+  :active
+
+*/
+// ::selection
+p#selection1::selection {
+  background-color: yellow;
+  color: red;
+  text-shadow: 2px 3px 4px gray;
+}
+
+p#korean1 {
+  font-size: 1.5rem;
+}
+
+// placeholder
+input#placeholder1 {
+  font-size: 1.2em;
+  padding: 0.5em;
+}
+
+input::placeholder {
+  color: gray;
+  font-size: 1.2em;
+}
