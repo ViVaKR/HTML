@@ -20,13 +20,336 @@
   padding: 0.3rem;
   background-color: rgb(233, 211, 183, 0.3);
 }
+h1 {
+  font-size: 3rem;
+}
 
 hr {
   margin: 1.5rem;
 }
 
-img.robot-man {
-  filter: blur(1px);
+div.container-11 {
+  container-name: div-container;
+  container-type: inline-size;
+}
+
+@container div-container (max-width: 768px) {
+  div {
+    font-size: 1rem;
+    color: blueviolet;
+  }
+}
+/*
+  --> [ grid, 그리드 ] <--
+  - Grid Container
+  - Grid Item
+  - Grid Track
+  - Grid Cell
+  - Grid Line
+  - Grid Number
+  - Grid Gap
+  - Grid Area
+
+  ? fr (fraction) : 비율, 공간비율, 단편, 부분, 나누기, 파편, 분수
+  * ex) 1fr 1fr 1fr : 균일하게 1:1:1 비율로 3개의 column 을 만들겠다는 의미
+  * ex) 100px 2fr 1fr : 첫번째 열을 100px 로 고정, 나머지는 2:1의 비율로 만듦
+
+  - grid-template-columns: repeat(5, 1fr);
+  ? == gird-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  * repeat(반복횟수, 반복값)
+
+  - grid-template-columns: repeat(3, minmax(100px, auto));
+  * minmax(100px, auto) : 최소한 100px, 최대는 자동으로 맞춤
+
+  - row-gap
+  - column-gap
+  - gap
+
+  ? 각 셀의 영역 지정 하기 ?
+  - grid-column-start
+  - grid-column-end
+  - grid-column
+  - grid-row-start
+  - grid-row-end
+  - grid-row
+
+  ? 정렬 ?
+  ** 컨테이너에서 **
+  - align-items : 모든 그리드 아이템을 세로축으로 셀의 중양에 정렬
+    + align-self 값을 그룹으로 설정 함
+  - justify-items : 모든 그리드 아이템을 가로축으로 셀의 중앙에 정렬
+  - place-item: <align-item> <justify-item>
+  * 그리드 아이템이 그리드 셀보다 작고 그 아이템을 셀안에서 중앙 정렬하고 싶을때 유용함
+  * 셀과 아이템 사이에 공간이 있어야 함.
+
+  ** 그리드 아이템에서 **
+  - align-self : 세로방향의 아이템 배치
+  - justify-self : 가로 방향의 아이템 배치
+  - place-self: <align-self> <justify-self>
+
+  * align-items : 수직 정렬 (열 축)
+  * justify-content : 수평 정렬 (행 축)
+  * place-content : <align> <justify>
+  - normal
+  - start
+  - center
+  - end
+  - space-around : 각 열 좌우의 여백을 고르게 정렬
+  - space-between : 첫열은 시작점에 끝저은 끝점에 정렬되고 나머지는 여백으로 고르게 정렬함
+  - space-evenly : 모든 여백을 고르게 정렬
+  - stretch : 행축을 채우기 위해 그리드 콘텐츠를 늘림
+
+*/
+
+div.grid-container-7 {
+  width: 500px;
+  height: 500px;
+  margin: 0.5rem;
+  background-color: rgb(210, 232, 168);
+  display: grid;
+  grid-template-rows: [row-1] 1fr [row-2] 1fr [row-3];
+  grid-template-columns: [col-1] 1fr [col-2] 1fr [col-3] 1fr [col-4];
+
+  .item:nth-child(1) {
+    background-color: blueviolet;
+    grid-row-start: row-2;
+    grid-row-end: row-3;
+    grid-column-start: col-2;
+    grid-column-end: col-4;
+    display: flex;
+
+    /*
+      ? flex-wrap ?
+      - nowrap : 기본값
+      - wrap : 여유가 없으면 다음 줄로 넘김 -> ?-content 작동함
+      - wrap-reverse : ... 아래가 아닌 위로 넘김
+    */
+    flex-wrap: wrap;
+    place-content: center;
+  }
+}
+div.grid-container-6 {
+  width: 500px;
+  height: 500px;
+  margin: 0.5rem;
+  display: grid;
+  grid: repeat(2, 1fr) / repeat(3, 1fr);
+
+  background-color: yellowgreen;
+
+  .item {
+    background-color: blueviolet;
+  }
+  .item:nth-child(1) {
+    grid-row-start: 2;
+    grid-row-end: 3;
+    grid-column-start: 2;
+    grid-column-end: 4;
+  }
+}
+
+div.grid-container-5 {
+  width: 500px;
+  height: 500px;
+  display: grid;
+  gap: 10px;
+  // grid-template-columns: repeat(3, 1fr);
+  // grid-template-rows: repeat(3, 1fr);
+  grid: repeat(3, 1fr) / repeat(3, 1fr);
+
+  // 어떤 방식으로 '자동 배치 알고리즘'으로 처리할지 정의함.
+  grid-auto-flow: row dense;
+
+  .item {
+    width: 100px;
+    height: 100px;
+    background-color: #4caf50;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    font-size: 2em;
+    color: white;
+  }
+
+  .item:nth-child(2) {
+    grid-column: span 3;
+    width: calc(500px - 1rem);
+  }
+}
+
+div.grid-container-4 {
+  width: 300px;
+  height: auto;
+  margin: 3rem;
+  display: grid;
+  grid-template-rows: 100px 100px;
+  grid-template-columns: 150px 150px;
+  gap: 0.5em;
+
+  grid-auto-rows: 100px;
+  grid-auto-columns: 100px;
+
+  .item {
+    background-color: darkorchid;
+    font-size: 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    border-radius: 1em;
+  }
+  .item:nth-child(3) {
+    grid-row: 3/4;
+    grid-column: 3/4;
+  }
+}
+
+div.grid-container-3 {
+  display: grid;
+
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-rows: repeat(3, 200px);
+  gap: 1em;
+
+  // align-items: center;
+  // justify-items: center;
+  // * 위 두줄을 아래와 같이 한줄로 작성 가능
+  place-items: center center;
+
+  .grid-item {
+    width: 50px;
+    height: 50px;
+    background-color: rgb(60, 204, 240);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.5em;
+  }
+
+  .grid-item:nth-child(5) {
+    background-color: rgb(175, 72, 72);
+    align-self: flex-start;
+    justify-self: end;
+
+    /*
+
+
+    */
+  }
+}
+
+div.grid-container-2 {
+  height: 50svh;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(100px, auto));
+  grid-auto-rows: minmax(100px, auto);
+  gap: 10px;
+
+  .grid-item {
+    background-color: #4caf50;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+div.grid-container {
+  min-height: 100svh;
+  display: grid;
+  grid-template-columns: minmax(200px, 2fr) 6fr minmax(100px, 1fr);
+  grid-template-rows: 50px 1fr 100px;
+  gap: 0.3em; // row-gap (2em), column-gap (1em)
+
+  grid-template-areas:
+    'header header header'
+    'sidebar-left main sidebar-right'
+    'footer footer footer';
+
+  .grid-item {
+    background-color: rgb(4, 138, 138, 0.3);
+    color: white;
+  }
+}
+
+// 최대 너비가 768px 인 화면까지에 대한 CSS 규칙
+@media screen and (max-width: 768px) {
+  div.grid-container {
+    min-height: 100svh;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows:
+      50px
+      minmax(50px, auto)
+      1fr
+      minmax(50px, auto)
+      100px; /* footer */
+
+    gap: 0.3em; // row-gap (2em), column-gap (1em)
+
+    grid-template-areas:
+      'header'
+      'sidebar-left'
+      'main'
+      'sidebar-right'
+      'footer';
+
+    .grid-item {
+      background-color: rgb(4, 138, 138, 0.3);
+      color: white;
+    }
+  }
+}
+
+.header {
+  grid-area: header;
+}
+.sidebar-left {
+  grid-area: sidebar-left;
+}
+.main {
+  grid-area: main;
+}
+.sidebar-right {
+  grid-area: sidebar-right;
+}
+.footer {
+  grid-area: footer;
+}
+
+div.img-box {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(200px, 1fr));
+  grid-auto-rows: minmax(200px, auto);
+  gap: 3rem;
+  justify-items: center;
+
+  img {
+    border-radius: 1em;
+  }
+}
+
+// filter
+img.robot-man1 {
+  filter: blur(5px);
+}
+
+img.robot-man2 {
+  filter: grayscale(100%);
+}
+
+img.robot-man3 {
+  filter: sepia(80%);
+}
+
+img.robot-man4 {
+  filter: invert(75%);
+}
+
+img.robot-man5 {
+  filter: drop-shadow(4px 4px 10px blue);
 }
 
 /*

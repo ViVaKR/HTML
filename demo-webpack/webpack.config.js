@@ -1,3 +1,4 @@
+// config
 // webpack config
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
@@ -6,45 +7,52 @@ import { fileURLToPath } from 'url';
 
 import webpack from 'webpack';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
-
-// import { glob } from 'glob';
+// import { glob } from 'glob'; // 사용하지 않으므로 제거
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+// 개발 모드 여부 확인 (HMR 최적화를 위해)
+const isDevelopment = process.env.NODE_ENV === 'development';
+
 const config = {
-    mode: 'development',
+    mode: isDevelopment ? 'development' : 'production', // NODE_ENV에 따라 mode 설정
+    performance: {
+        hints: isDevelopment ? false : 'warning',
+        maxAssetSize: 500 * 1024, // 500KiB
+        maxEntrypointSize: 500 * 1024,
+
+    },
     entry: {
-        // 'main' 엔트리 포인트
         main: './src/js/index.js',
-        // 'about' 엔트리 포인트
         about: './src/js/about.js'
     },
     output: {
-        filename: '[name].[contenthash].js',
-        chunkFilename: '[name].[contenthash].js',
+        filename: isDevelopment ? '[name].js' : '[name].[contenthash].js', // 개발 시에는 캐시 무력화 방지
+        chunkFilename: isDevelopment ? '[name].js' : '[name].[contenthash].js',
         path: path.resolve(__dirname, 'dist'),
         clean: true
     },
     devServer: {
         static: path.resolve(__dirname, 'dist'),
-        hot: true,
+        hot: true, // HMR 활성화
         open: true,
         port: 8081,
-        watchFiles: [
-            'src/**/*.html',
-            'src/**/*.js',
-            'src/**/*.scss',
-            'src/**/*.ts',
-            'src/**/*.tsx'
-        ],
+        // watchFiles: [ // 이 설정은 특정 로더에 의존하지 않는 파일들 (예: html, css)을 감시하는데,
+        //               // 이미 모듈 로더와 HMR이 처리하므로 불필요하거나 충돌을 일으킬 수 있음.
+        //               // 특히 SCSS는 style-loader가 처리하므로 여기서 감시할 필요 없음.
+        //     'src/**/*.html',
+        // ],
+        // 로더가 처리하는 파일들은 로더와 HMR이 알아서 처리하게 둡니다.
+        // `watchFiles`는 로더가 처리하지 않는 추가적인 파일(예: 이미지 파일의 변경)을 감지할 때 유용.
+        // HMR이 CSS, JS, HTML을 잘 처리하기 때문에 이 부분을 제거하거나 필요한 경우만 최소한으로 설정하는 것이 좋습니다.
         historyApiFallback: true,
         headers: {
             'X-Content-Type-Options': 'nosniff'
         }
     },
     resolve: {
-        extensions: ['.js'],
+        extensions: ['.js', '.ts', '.tsx'], // .ts, .tsx 추가
         alias: {
             '@': path.resolve(__dirname, 'src'),
             'js': path.resolve(__dirname, 'src/js'),
@@ -61,27 +69,38 @@ const config = {
             {
                 test: /\.(js|jsx)$/i,
                 loader: 'babel-loader',
+                options: { // Babel 프리셋 추가
+                    presets: ['@babel/preset-env']
+                },
+                exclude: /node_modules/ // node_modules 제외
             },
             {
                 test: /\.css$/,
-                use: ['style-loader', 'css-loader']
+                // 개발 시 style-loader, 배포 시 MiniCssExtractPlugin.loader
+                use: [
+                    isDevelopment ? 'style-loader' : MiniCssExtractPlugin.loader,
+                    {
+                        loader: 'css-loader',
+                        options: { sourceMap: isDevelopment }
+                    }
+                ]
             },
             {
                 test: /\.(scss)$/,
                 use: [
-                    MiniCssExtractPlugin.loader,
+                    isDevelopment ? 'style-loader' : MiniCssExtractPlugin.loader, // 개발 시 style-loader
                     {
                         loader: 'css-loader',
+                        options: { sourceMap: isDevelopment }
                     },
                     {
                         loader: 'postcss-loader',
+                        options: { sourceMap: isDevelopment }
                     },
                     {
                         loader: 'sass-loader',
                         options: {
-                            // `sourceMap`은 소문자 `s`로 시작합니다.
-                            sourceMap: true,
-                            // `sassOptions`는 sass 관련 설정을 담는 올바른 속성 이름입니다.
+                            sourceMap: isDevelopment, // 개발 시에만 sourceMap 활성화
                             sassOptions: {
                                 quietDeps: true
                             }
@@ -92,17 +111,14 @@ const config = {
         ]
     },
     plugins: [
-        // --> index.html 을 위한 프로그인
         new HtmlWebpackPlugin({
-            template: './src/index.html',
+            template: path.resolve(__dirname, './src/index.html'), // 절대 경로 사용
             filename: 'index.html',
             chunks: ['main'],
             favicon: path.resolve(__dirname, 'src/public/favicons/favicon.ico')
         }),
-
-        // --> 추가 페이지를 위한 새로운 플러그인 설정
         new HtmlWebpackPlugin({
-            template: 'src/components/about.html',
+            template: path.resolve(__dirname, 'src/components/about.html'), // 절대 경로 사용
             filename: 'about.html',
             chunks: ['about']
         }),
@@ -114,181 +130,14 @@ const config = {
                 }
             ]
         }),
-        new MiniCssExtractPlugin({
+        // 개발 모드에서는 MiniCssExtractPlugin을 사용하지 않음 (HMR을 위해)
+        // 배포 모드에서만 CSS 파일을 별도로 추출하도록 조건부 추가
+        ...(!isDevelopment ? [new MiniCssExtractPlugin({
             filename: '[name].[contenthash].css',
             chunkFilename: '[name].[contenthash].css'
-        }),
+        })] : []),
         new webpack.HotModuleReplacementPlugin(),
     ],
 }
 
 export default config;
-
-
-/*
-    ? 동적으로 페이지 추가 하는 로직
-*/
-
-// const generatePage = async () => {
-//     // 모든 html 찾기
-//     const htmlFiles = await glob('src/**/*.html', { ignore: 'node_modules/**' });
-//     const pages = htmlFiles.map(x => {
-//         // 파일 경로에서 이름 추출 (예: 'src/components/about.html' -> 'components/about)
-//         const name = path.relative('src', x).replace('.html', '').replace(/\\/g, '/');
-//         return {
-//             name,
-//             htmlPath: x,
-//             jsPath: `./src/js/${name}.js`
-//         }
-
-//     });
-
-//     // 엔트리 및 플러그인 객체 초기화
-
-//     const entries = {};
-//     const htmlPlugins = [];
-
-//     pages.forEach(page => {
-
-//         // 해당 .js 파일이 존재하면  엔트리 포인트로 추가
-
-//     })
-// }
-
-// // 동적 엔트리 및 플러그인 생성을 위한 함수
-// const generatePages = async () => {
-//     // 모든 HTML 파일 찾기
-//     const htmlFiles = await glob('src/**/*.html', { ignore: 'node_modules/**' });
-//     const pages = htmlFiles.map(filePath => {
-//         // 파일 경로에서 이름 추출 (예: 'src/components/about.html' -> 'components/about')
-//         const name = path.relative('src', filePath).replace('.html', '').replace(/\\/g, '/');
-
-//         return {
-//             name,
-//             htmlPath: filePath,
-//             jsPath: `./src/js/${name}.js`
-//         };
-//     });
-
-//     // 엔트리 및 플러그인 객체 초기화
-//     const entries = {};
-//     const htmlPlugins = [];
-
-//     pages.forEach(page => {
-//         // 해당 .js 파일이 존재하면 엔트리 포인트로 추가
-//         if (path.existsSync(path.resolve(__dirname, page.jsPath))) {
-//             entries[page.name] = page.jsPath;
-//         }
-
-//         // HtmlWebpackPlugin 설정
-//         htmlPlugins.push(
-//             new HtmlWebpackPlugin({
-//                 template: page.htmlPath,
-//                 filename: `${page.name}.html`,
-//                 chunks: [page.name],
-//             })
-//         );
-//     });
-
-//     return { entries, htmlPlugins };
-// };
-
-// const config = async () => {
-//     const { entries, htmlPlugins } = await generatePages();
-
-//     return {
-//         mode: 'development',
-//         entry: entries, // 동적으로 생성된 엔트리
-//         output: {
-//             filename: '[name].[contenthash].js',
-//             chunkFilename: '[name].[contenthash].js',
-//             path: path.resolve(__dirname, 'dist'),
-//             clean: true
-//         },
-//         devServer: {
-//             static: path.resolve(__dirname, 'dist'),
-//             hot: true,
-//             open: true,
-//             port: 8081,
-//             watchFiles: [
-//                 'src/**/*.html',
-//                 'src/**/*.js',
-//                 'src/**/*.scss',
-//                 'src/**/*.ts',
-//                 'src/**/*.tsx'
-//             ],
-//             historyApiFallback: true,
-//             headers: {
-//                 'X-Content-Type-Options': 'nosniff'
-//             }
-//         },
-//         resolve: {
-//             extensions: ['.js'],
-//             alias: {
-//                 '@': path.resolve(__dirname, 'src'),
-//                 'js': path.resolve(__dirname, 'src/js'),
-//                 'assets': path.resolve(__dirname, 'src/public/assets')
-//             }
-//         },
-//         module: {
-//             rules: [
-//                 {
-//                     test: /\.(ts|tsx)$/i,
-//                     use: 'ts-loader',
-//                     exclude: /node_modules/
-//                 },
-//                 {
-//                     test: /\.(js|jsx)$/i,
-//                     loader: 'babel-loader',
-//                 },
-//                 {
-//                     test: /\.css$/,
-//                     use: ['style-loader', 'css-loader']
-//                 },
-//                 {
-//                     test: /\.(scss)$/,
-//                     use: [
-//                         MiniCssExtractPlugin.loader,
-//                         {
-//                             loader: 'css-loader',
-//                         },
-//                         {
-//                             loader: 'postcss-loader',
-//                         },
-//                         {
-//                             loader: 'sass-loader',
-//                             options: {
-//                                 sourceMap: true,
-//                                 sassOptions: {
-//                                     quietDeps: true
-//                                 }
-//                             }
-//                         }
-//                     ]
-//                 }
-//             ]
-//         },
-//         plugins: [
-//             ...htmlPlugins, // 동적으로 생성된 HtmlWebpackPlugin 플러그인들을 스프레드
-//             new CopyWebpackPlugin({
-//                 patterns: [
-//                     {
-//                         from: path.resolve(__dirname, 'src/public/assets'),
-//                         to: 'assets'
-//                     }
-//                 ]
-//             }),
-//             new MiniCssExtractPlugin({
-//                 filename: '[name].[contenthash].css',
-//                 chunkFilename: '[name].[contenthash].css'
-//             }),
-//             new webpack.HotModuleReplacementPlugin(),
-//         ],
-//     };
-// };
-
-
-
-// export default (env, argv) => {
-//     return config;
-// }
