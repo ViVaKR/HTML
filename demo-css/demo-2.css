@@ -1,0 +1,181 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  padding: 1rem;
+}
+
+div.align-5 {
+  width: 100%;
+  height: 200px;
+  background-color: orange;
+  margin: 1rem 0;
+
+  display: flex;
+  flex-wrap: wrap;
+  /*
+  ign-items는 한 줄을 기준으로 정렬하는 반면, align-content는 두 줄부터 사용하는데 의미가 있다
+  그래서 align-content의 경우, 두 줄의 flex-wrap:wrap;인 상태에서 사용해야 한다.
+  만약 no-wrap이면 라인이 넘어가지 않아 계속 한 줄인 상태이기 때문에
+  align-content를 사용해도 적용이 되지 않는다.
+ 
+  즉,
+  align-items는 수직축의 라인을 기준으로 아이템들이 정렬이 되고,
+  align-content는 수직축의 라인을 기준으로 (두 줄 이상 일 때만) 라인 자체가 정렬이 된다.
+
+  */
+  justify-content: center;
+  align-content: center;
+}
+
+h5 {
+  background-color: orange;
+  height: 200px;
+  display: table-cell;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  vertical-align: middle;
+}
+
+/*
+  ! vertical-align !
+  * 인라인 레벨요소와 테이블 셀 요소 내부의 수직 정렬을 지정하는 속성
+
+  - td, th
+  - inline, inline-table, inline-block
+
+  ? 블록레벨 (block-level) 요소
+
+*/
+.align1 {
+  height: 100px;
+  background-color: #d79cec;
+  font-size: 2rem;
+  padding: 0.4em;
+}
+.icon {
+  vertical-align: 10%;
+}
+
+.text-overflow {
+  width: 400px;
+  border: 2px solid red;
+
+  /*
+
+    - white-space는 공백 처리 + 줄 바꿈 여부를 총체적으로 제어하는 오래되고 안정적인 속성.
+    - text-wrap은 오직 자동 줄 바꿈 방식만 제어, white-space의 공백 처리 방식과는 독립적으로 작동. 특히 balance, pretty 같은 고급 줄 바꿈 알고리즘을 제공하는 최신 속성.
+  */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 1em 0;
+  padding: 1em;
+  border-radius: 0.4em;
+}
+
+h2 {
+  margin: 1em 0;
+  text-transform: capitalize;
+
+  user-select: all;
+  -webkit-user-select: all;
+
+  /*
+   - auto
+   - none
+   - all
+
+   * 편집가능한 텍스트에서는 작용하지 않음.
+
+  */
+
+  /*
+   - none
+   - uppercase
+   - lowercase
+   - capitalize
+  */
+}
+
+h1 {
+  color: rgb(5, 164, 213);
+
+  /* text-emphasis: triangle rgb(5, 164, 213); */
+  text-emphasis: double-circle;
+  letter-spacing: 5px;
+
+  /*
+
+  - filled
+  - open
+  - dot
+  - circle
+  - double-circle
+  - sesame
+  - open sesame
+  - sesame open
+
+  */
+}
+/*
+    ! Containing block !
+    * 가장 가까운 position 속성의 값이
+    - relative
+    - absolute
+    - fixed
+    - sticky
+    인 조상 요소의 Padding box 가 되며
+    그러한 조상 요소가 없다면 루트요소 (<html>) 가 됨.
+
+    - position: static; // 기본값 이동 불가
+    - position: relative; // 자기 자신을 기준으로 이동, 원래의 위치를 기준으로 이동
+    - position: absolute; // 부모을 기준으로 이동 (relative, absolute, fixed)
+    - position: fixed; // 브라우저의 전체화면, 뷰포트를 기준으 고정 배치
+    - position: sticky; // 스크롤 영역을 기준으로 스크롤링할 때 요소를 배치
+*/
+
+/* relative */
+.relative {
+  position: relative;
+  left: 40px; /* 왼쪽에서 40px 간격 (오프셋) */
+}
+
+/* absolute */
+
+/* sticky */
+.container {
+  overflow: scroll;
+  height: 300px;
+  border: 5px solid red;
+}
+
+section {
+  background-color: beige;
+  height: 400px;
+}
+
+section + section {
+  margin-top: 2em;
+}
+
+.sticky {
+  position: sticky;
+  top: 0;
+  color: #fff;
+  padding: 1em;
+  background-color: rgba(204, 51, 255, 0.7);
+  border: 3px solid #39004d;
+}

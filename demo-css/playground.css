@@ -1,0 +1,227 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Cute+Font&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+}
+
+body {
+  background-color: rgb(224, 194, 153, 0.5);
+  font-family: 'Roboto', sans-serif;
+}
+
+/*
+
+    ! position !
+    * 요소의 위치 지정 방식을 설정
+
+    - static : 기본 초기값, 요소의 위치(top, bottom, left, right)를 적용할 수 없는 정적인 방식.
+    - relative : 자체 영역을 기준으로 하는 상대적인 간격을 (top, bottom, left, right) 오프셋 값으로 적용하는 위치 지정 방식
+    - absolute
+    - fixed
+    - sticky
+
+
+*/
+
+/*
+    ! 글꼴 종류 !
+    * 글꼴 종류는 키워드이므로 따옴표로 감싸서는 안됨
+    * 글꼴 종류란 실제 글꼴 이름이 아닌 글꼴을 디자인한 스타일에 따라 분류한 계열
+    * 글꼴 종류는 반드시 목록의 마지막 항목으로만 작성되어야 함
+    * 브라우저가 정확한 '글꼴 이름'을 선택할 수 없을 경우 대체 글꼴로 마지막에 추가한
+    *     글꼴종류에서 비슷한 스타일의 글꼴을 적용하기 위함..
+    - sans-serif : 획의 삐침이 없는 글씨체
+    - serif : 획의 일부 끝이 돌출된 형태의 글씨체 'Times New Roman'
+    - monospace : 모든 문자의 너비가 동일하게 고정된 글씨체
+        <code>, <pre>, <samp>, <var>
+    - cursive : 필기체 'Brush Script MT', '궁서'
+    - fantasy : 장식용 글꼴
+    - system-ui : 브라우저가 실행되는 플랫폼의 기본 사용자 인터페이스 글꼴에서 자겨온 글꼴
+    - ui-monospace
+    - ui-rounded
+    - emoji
+
+    ! font-variant !
+    * 글꼴의 변형 스타일을 한번에 지정하는 단축 속성
+    * 텍스트의 대문자 스타일, 숫자 형식 기타 글꼴 변형 스타일을 효율적으로제어 할 수 있음.
+
+    ! 커닝 !
+    * 인접한 문자 사이의 간격을 조정하여 시각적으로 더 조화롭고 매끄롭게 보이게 하는 것을 말함.
+
+    ! letter-spacing !
+
+    ! line-break !
+    - 자동 줄바꿈 (soft wrpping) : 텍스트 라인의 끝이 요소 컨테이너에 도달하면 자동으로 새로운 줄로 줄바꿈
+    - 한국어는 음절 단위에서 자동 줄바꿈을 하는 특성
+    - 한국어의 경우에는 word-break 속성값이 keep-all 로 설정된 경우는 영어처럼 단어와 단어 사이의 공백에서 줄바꿈함
+
+    - auto : 기본값
+    - loose : 느슨한 줄바꿈
+    - normal : 표준 줄바꿈, 가장 일반적인 줄바꿈 규칙을 적용함
+    - strict : 가장 엄격한 줄바꿈 규칙을 적용함
+    - anywhere : 어디에서나 줄바꿈할 수 있음
+
+    ! list-style !
+    - disc : 초기값, 채워진 원
+    - circle : 속이 빈 원
+    - square : 채워진 사각형
+    - decimal : 숫자
+    - disclosure-open : 열렸음을 나타내는 기호
+    - decimal-leading-zero : 한 자릿수의 숫자 앞에 0을 채운 10진수
+    - lower-roman : 소문자 로마 숫자
+    - upper-roman : 대문자 로마 숫자
+    - lower-greek : 소문자 고전 그리스어
+    - lower-alpha : 소문자 알파벳
+    - lower-latin : 소문자 알파벳
+    - none : 리스트 마커 지움
+
+    - list-style-image: url("이미지 경로");
+    - list-style-image: linear-gradient(red, blue);
+
+    ! outline !
+    * outline 속성은 바깥쪽에 있는 외곽선의 너비, 스타일, 색상
+    * outline > border > padding > content
+    - solid
+    - dashed
+    - dotted
+    - groove
+    - ridge
+    - inset
+    - outset
+    - double
+*/
+
+/* overflow */
+
+div.overflow-text {
+  width: 400px;
+  height: 100px;
+  margin: 1em;
+  padding: 1em;
+  overflow: scroll;
+  border: 5px solid rgb(3, 142, 248);
+  border-radius: 1em;
+  overflow-wrap: anywhere;
+}
+
+/* button */
+div.button-group {
+  margin: 1em;
+  padding: 1em;
+}
+
+div.button-group button {
+  border: 1px solid #6699ff;
+  padding: 0.8em;
+  border-radius: 0.4em;
+  background-color: #e6eeff;
+  color: #003cb3;
+  cursor: pointer;
+}
+
+button:focus {
+  background-color: #ccddff;
+  color: #002b80;
+  outline-width: 5px;
+  outline-style: dotted;
+  outline-color: #003cb3;
+  outline-offset: 3px;
+  /* outline-width: 10px; */
+}
+
+p {
+  padding: 1em;
+  margin: 2.5em;
+  border: 3px solid rgb(49, 122, 191);
+}
+
+div.box {
+  margin: 2rem;
+  width: 150px;
+  height: 150px;
+  background-color: gold;
+  border-radius: 50%;
+  border: 2px solid red;
+  outline: 5px solid blue;
+  /* outline 과 border 사이의 간격 (5px) 을 조정 */
+  outline-offset: 5px;
+}
+.dashed {
+  outline: dashed 10px;
+  background-color: #c2d089;
+}
+.dotted {
+  outline: medium dotted; /* thin medium thick */
+}
+
+.groove {
+  outline: 15px groove;
+}
+.ridge {
+  outline: 15px ridge;
+}
+.inset {
+  outline: 15px inset;
+}
+
+.outset {
+  outline: 15px outset;
+}
+
+.container-1 {
+  width: 300px;
+  height: 100px;
+  padding: 0rem;
+
+  border: 3px dashed red;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/*
+    ! object-fit !
+    - fill
+    - contain
+    - cover
+    - none
+    - scale-down
+
+*/
+
+ul#list-marker {
+  list-style-type: square;
+  list-style-image: linear-gradient(red, blue);
+  list-style-position: outside; /* inside */
+}
+
+ul#list-marker li::marker {
+  content: '😘 ';
+  font-size: 0.8em;
+}
+
+p#id-3 {
+  font-family: 'Roboto', snas-serif;
+  font-size: 3em;
+  letter-spacing: 1em;
+}
+p#id-2 {
+  background-color: yellowgreen;
+  line-height: 500%;
+  font-family: 'Roboto', sans-serif;
+  font-variant: small-caps sub;
+}

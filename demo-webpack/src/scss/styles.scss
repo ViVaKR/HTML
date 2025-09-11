@@ -20,6 +20,7 @@
   padding: 0.3rem;
   background-color: rgb(233, 211, 183, 0.3);
 }
+
 h1 {
   font-size: 3rem;
 }
@@ -28,17 +29,62 @@ hr {
   margin: 1.5rem;
 }
 
-div.container-11 {
-  container-name: div-container;
-  container-type: inline-size;
+/*
+  ! font !
+
+  selector {
+    font: font-style font-variant-css2 font-weight font-width-css3 font-size / line-height font-family system-family-name
+  }
+
+  - font-style
+  - font-variant
+  - font-weight
+  - font-stretch
+  - font-size
+  - line-height
+  - font-family
+
+  * 필수 속성
+  - font-size
+  - font-family
+
+
+  * 시스템 글꼴
+  - message-box : 메시지 박스 텍스트로 대화 상자에 사용되는 시스템 글꼴
+  - small-caption : 작은 캡션 텍스트로 작은 컨트롤에 레이블을 지정하는 데 사용되는 시스템 글꼴
+  - status-bar : 상태 바 텍스트로 창 상태 표시줄에 사용되는 글꼴
+  - menu : 메뉴목록 및 드롭다운 메뉴 에 사용
+  - icon : 아이콘에 레이블을 지정하는데 사용
+  - caption : 갭션 텍스트로 캡션이 있는 컨트롤 버튼, 드롭다운 등에 사용되는 글꼴
+
+  * 애니메이션
+  - font-weight
+  - font-stretch
+  - font-size
+  - line-height
+
+
+*/
+
+p.font-demo {
+  // font: icon;
+  // font: small-caption;
+  // font: caption;
+  // font: status-bar;
+  // font: 'Roboto' 'Cute Font', sans-serif;
+  // font-size font-family
+  font: 1.4em '', sans-serif;
+  cursor: progress;
+
+  &:hover {
+    font-style: oblique;
+    color: darkgreen;
+  }
+
+  // font: small-caps bold 18px/1.4 sans-serif;
+  // font: message-box;
 }
 
-@container div-container (max-width: 768px) {
-  div {
-    font-size: 1rem;
-    color: blueviolet;
-  }
-}
 /*
   --> [ grid, 그리드 ] <--
   - Grid Container
@@ -700,4 +746,15 @@ input#placeholder1 {
 input::placeholder {
   color: gray;
   font-size: 1.2em;
+}
+
+.post {
+  container-type: inline-size;
+  container-name: sidebar;
+}
+
+@container sidebar (width >=400px) {
+  .card {
+    color: red;
+  }
 }
