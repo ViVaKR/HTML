@@ -1,0 +1,35 @@
+@use 'base';
+
+div.container {
+  width: 100%;
+  min-height: 100vh;
+
+  display: grid;
+  grid-template:
+    'header' 80px
+    'main' 1fr
+    'footer' 150px
+    / 1fr;
+}
+
+header {
+  grid-area: header;
+  background-color: darkcyan;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  font-size: 1.25rem;
+}
+
+main {
+  grid-area: main;
+  background-color: lightblue;
+  padding: 1rem;
+}
+
+footer {
+  grid-area: footer;
+  background-color: rgb(159, 9, 124);
+  color: lightblue;
+}

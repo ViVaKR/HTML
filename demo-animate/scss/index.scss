@@ -39,7 +39,6 @@ $numbers: (1, 2, 3, 4, 5, 6, 7, 8, 9);
   display: grid;
   //   grid-template-columns: 200px 1fr 100px;
   //   grid-template-rows: 80px 1fr 2rem 150px;
-  gap: 0.3rem;
 
   grid-template:
     'header header header' 80px
@@ -47,6 +46,11 @@ $numbers: (1, 2, 3, 4, 5, 6, 7, 8, 9);
     '. . .' 2rem
     'footer footer footer' 150px
     / 100px 1fr 50px;
+}
+
+h3 {
+  color: #4285f4;
+  text-shadow: 2px 2px 1px rgba(101, 105, 105, 0.5);
 }
 
 header {
@@ -75,11 +79,13 @@ header {
 }
 
 main {
+  position: relative;
+  width: 100%;
+  padding: 0.5rem;
   grid-area: main;
   display: flex;
   flex-direction: column;
   gap: 1rem;
-
   background-color: rgb(246, 242, 234);
 }
 .right-menubar {
@@ -157,6 +163,7 @@ div.transition-demo {
   - skeyY(y-angle)
   - rotate(angle) : 요소를 angle 만큼 회전 시킴
 */
+
 $width: 100px;
 $height: 50px;
 $color1: #ba4a4a;
@@ -165,6 +172,27 @@ $color1: #ba4a4a;
   width: $width;
   height: $height;
   background-color: $color1;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.3rem;
+  &:hover {
+    // transform: translate(5px, 5px) delay(1s);
+    // transform: translateX(50px) scale(1.25);
+    // transform: skew(10deg, 10deg);
+    // transform: rotate(45deg);
+    // transform: scale(0.5);
+    // transition: transform 1.5s ease-in-out;
+
+    transition-property: transform, opacity;
+    transition-duration: 1.5s;
+    transition-timing-function: linear;
+    transform: scale(1.5) rotate(360deg);
+    transform-origin: 80% 80%;
+    opacity: 0.5;
+  }
 }
 
 /*
@@ -207,6 +235,47 @@ $color1: #ba4a4a;
 
 */
 
+div.animation {
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+div.movement {
+  width: 100px;
+  height: 20px;
+  margin: 1rem;
+  background-color: darkorchid;
+
+  animation-name: movement;
+  animation-duration: 5s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-delay: 0.5s;
+
+  // * animation-direction *
+
+  // --> normal : 기본값 from (0%) 에서 to (100%) 방향으로 진행
+  // --> reverse : to 에서 from 방향으로 진행
+  // --> alternate : 홀수번째는 normal, 짝수번째는 reverse로 진행
+  animation-direction: alternate;
+}
+
+@keyframes movement {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  to {
+    transform: translateX(calc(100vw - 250px - 4rem));
+    opacity: 0;
+  }
+}
+
 .ani-4 {
   width: 80px;
   height: 80px;
@@ -214,7 +283,6 @@ $color1: #ba4a4a;
   border-top-color: transparent;
   border-radius: 50%;
   box-sizing: border-box;
-  margin: 1rem;
 
   animation-name: loading;
   animation-duration: 1s;
